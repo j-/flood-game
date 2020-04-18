@@ -1,9 +1,9 @@
 {
-  "name": "jay-react-redux-ts",
+  "name": "flood-game",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "src/index.tsx",
+  "main": "build/index.html",
   "dependencies": {
     "@types/react": "16.9.34",
     "@types/react-dom": "16.9.5",
