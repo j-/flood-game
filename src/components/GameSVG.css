@@ -1,0 +1,5 @@
+.GameSVG {
+  width: min(100%, 40em);
+  height: auto;
+  margin: auto;
+}
