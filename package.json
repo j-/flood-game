@@ -22,7 +22,9 @@
     "typescript": "3.8.3"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "@types/jest": "^25.2.1",
+    "gh-pages": "^2.2.0",
+    "ts-jest": "^25.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
