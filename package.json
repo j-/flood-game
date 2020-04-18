@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "build/index.html",
+  "homepage": "https://skeoh.com/flood-game",
   "dependencies": {
     "@types/react": "16.9.34",
     "@types/react-dom": "16.9.5",
@@ -20,12 +21,16 @@
     "seedrandom": "2.4.4",
     "typescript": "3.8.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
