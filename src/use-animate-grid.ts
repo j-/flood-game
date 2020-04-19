@@ -4,8 +4,8 @@ import { getBoardWidth, getBoardHeight, getBoardColor } from './board';
 import { usePrevious } from './use-previous';
 import { useRects } from './use-rects';
 
-const PERIOD = 1500;
-const MAX_DISTANCE_OFFSET = 1000;
+const PERIOD = 500;
+const MAX_DISTANCE_OFFSET = 500;
 
 export const useAnimateGrid = (board: Board, gridRef: React.RefObject<SVGSVGElement>) => {
   const previousBoard = usePrevious(board);
