@@ -3,3 +3,10 @@
   height: auto;
   margin: auto;
 }
+
+.GameSVG rect[data-color="0"] { fill: hsl(0, 100%, 60%); }
+.GameSVG rect[data-color="1"] { fill: hsl(60, 100%, 60%); }
+.GameSVG rect[data-color="2"] { fill: hsl(120, 100%, 60%); }
+.GameSVG rect[data-color="3"] { fill: hsl(180, 100%, 60%); }
+.GameSVG rect[data-color="4"] { fill: hsl(240, 100%, 60%); }
+.GameSVG rect[data-color="5"] { fill: hsl(300, 100%, 60%); }

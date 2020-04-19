@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Board, Color } from '../types';
 import { getBoardWidth, getBoardHeight, getBoardColor } from '../board';
-import { getFillColor } from '../color';
 import './GameSVG.css';
 
 export interface Props {
@@ -16,12 +15,11 @@ const GameSVG: React.FC<Props> = ({ board, onClick }) => {
   const WIDTH = boardWidth * SIZE;
   const HEIGHT = boardHeight * SIZE;
   const VIEWBOX = `0 0 ${WIDTH} ${HEIGHT}`;
-  const children = [];
+  const children: React.ReactChild[] = [];
 
   for (let y = 0; y < boardHeight; y++) {
     for (let x = 0; x < boardWidth; x++) {
       const color = getBoardColor(board, x, y);
-      const fill = getFillColor(color);
       children.push(
         <rect
           key={x + ',' + y}
@@ -29,7 +27,7 @@ const GameSVG: React.FC<Props> = ({ board, onClick }) => {
           y={y * SIZE - 0.5}
           width={SIZE + 1}
           height={SIZE + 1}
-          fill={fill}
+          data-color={color}
           onClick={() => onClick(color)}
           onTouchStart={() => onClick(color)}
         />
