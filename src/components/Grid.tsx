@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Board, Color } from '../types';
 import { getBoardWidth, getBoardHeight, getBoardColor } from '../board';
+import { useAnimateGrid } from '../use-animate-grid';
 import GridSVG from './GridSVG';
 import './Grid.css';
 
@@ -14,17 +15,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
   const boardWidth = getBoardWidth(board);
   const boardHeight = getBoardHeight(board);
 
-  React.useEffect(() => {
-    if (!gridRef.current) return;
-    const grid = gridRef.current;
-    for (let x = 0; x < boardWidth; x++) {
-      for (let y = 0; y < boardHeight; y++) {
-        const color = getBoardColor(board, x, y);
-        const rect = grid.getElementById(x + ',' + y) as SVGRectElement;
-        rect.dataset.color = color.toString();
-      }
-    }
-  }, [board, boardWidth, boardHeight]);
+  useAnimateGrid(board, gridRef);
 
   return (
     <div className="Grid d-flex align-items-center">
