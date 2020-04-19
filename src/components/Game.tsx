@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Color } from '../types';
 import { getSeed, getBoard, getMoves, isGameOver, isGameWon, canUndoLastMove } from '../store';
 import { startGame, flood, undoMove } from '../store/actions';
-import GameSVG from './GameSVG';
+import Grid from './Grid';
 import './Game.css';
 
 const Game: React.FC = () => {
@@ -62,8 +62,8 @@ const Game: React.FC = () => {
           Restart
         </button>
       </nav>
-      <div className="d-flex align-items-center mt-4 mb-4">
-        <GameSVG
+      <div className="mt-4 mb-4">
+        <Grid
           board={board}
           onClick={handleClickColor}
         />
