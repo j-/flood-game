@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/flood-game/precache-manifest.6ca84c61cbfa03e99d64e7b0c31e6192.js"
+  "/flood-game/precache-manifest.50fd0ce12a4c66cbdb9a78e50c6d79da.js"
 );
 
 self.addEventListener('message', (event) => {
