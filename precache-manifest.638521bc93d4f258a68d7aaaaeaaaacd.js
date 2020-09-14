@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c73c031a4d53d8f6576379f8eebfa30",
+    "revision": "436d7aee5f37961631232b4f75439cb1",
     "url": "/flood-game/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flood-game/static/css/2.d6500151.chunk.css"
   },
   {
-    "revision": "4bc9dac4eb4fe3e3917b",
-    "url": "/flood-game/static/css/main.b3f6600f.chunk.css"
+    "revision": "92a71bd028cfff506efe",
+    "url": "/flood-game/static/css/main.8ecc19c2.chunk.css"
   },
   {
     "revision": "a80ebbf120dbd1e62e50",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flood-game/static/js/2.d502977b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4bc9dac4eb4fe3e3917b",
+    "revision": "92a71bd028cfff506efe",
     "url": "/flood-game/static/js/main.ea0b7ee6.chunk.js"
   },
   {
