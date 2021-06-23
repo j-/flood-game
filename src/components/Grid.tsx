@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Board, Color } from '../types';
-import { getBoardWidth, getBoardHeight, getBoardColor } from '../board';
-import { useAnimateGrid } from '../use-animate-grid';
+import { getBoardColor } from '../board';
 import GridSVG from './GridSVG';
 import './Grid.css';
 
@@ -11,21 +10,17 @@ export interface Props {
 }
 
 const Grid: React.FC<Props> = ({ board, onClick }) => {
-  const gridRef = React.useRef<SVGSVGElement>(null);
-  const boardWidth = getBoardWidth(board);
-  const boardHeight = getBoardHeight(board);
-
-  useAnimateGrid(board, gridRef);
+  const handleClick = React.useCallback<React.EventHandler<React.SyntheticEvent<SVGRectElement>>>((e) => {
+    const x = Number(e.currentTarget.dataset.x);
+    const y = Number(e.currentTarget.dataset.y);
+    onClick(getBoardColor(board, x, y));
+  }, [board, onClick]);
 
   return (
     <div className="Grid d-flex align-items-center">
       <GridSVG
-        ref={gridRef}
-        width={boardWidth}
-        height={boardHeight}
-        onClick={(x, y) => {
-          onClick(getBoardColor(board, x, y))
-        }}
+        board={board}
+        onClick={handleClick}
       />
     </div>
   );
