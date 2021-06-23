@@ -23,7 +23,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
   const VIEWBOX = `0 0 ${WIDTH} ${HEIGHT}`;
   const children: React.ReactChild[] = [];
 
-  const handleClick = useCallback<React.EventHandler<React.SyntheticEvent<SVGRectElement>>>((e) => {
+  const handleClick = useCallback<React.ReactEventHandler<SVGRectElement>>((e) => {
     const x = Number(e.currentTarget.dataset.x);
     const y = Number(e.currentTarget.dataset.y);
     onClick(getBoardColor(board, x, y));
