@@ -1,3 +1,0 @@
-.GridSVG rect {
-  transition: fill 100ms linear calc(var(--distance) * 50ms);
-}

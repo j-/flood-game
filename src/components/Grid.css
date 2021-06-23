@@ -3,7 +3,7 @@
   height: 100%;
 }
 
-.Grid svg {
+.Grid-svg {
   width: min(100%, 40em);
   height: auto;
   margin: auto;
@@ -15,3 +15,7 @@
 .Grid rect[data-color="3"] { fill: hsl(180, 100%, 60%); }
 .Grid rect[data-color="4"] { fill: hsl(240, 100%, 60%); }
 .Grid rect[data-color="5"] { fill: hsl(300, 100%, 60%); }
+
+.Grid rect {
+  transition: fill 100ms linear calc(var(--distance) * 50ms);
+}
