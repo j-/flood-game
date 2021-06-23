@@ -1,25 +1,23 @@
 {
   "files": {
-    "main.css": "/flood-game/static/css/main.8ecc19c2.chunk.css",
-    "main.js": "/flood-game/static/js/main.ea0b7ee6.chunk.js",
-    "main.js.map": "/flood-game/static/js/main.ea0b7ee6.chunk.js.map",
-    "runtime-main.js": "/flood-game/static/js/runtime-main.e71e178a.js",
-    "runtime-main.js.map": "/flood-game/static/js/runtime-main.e71e178a.js.map",
-    "static/css/2.d6500151.chunk.css": "/flood-game/static/css/2.d6500151.chunk.css",
-    "static/js/2.d502977b.chunk.js": "/flood-game/static/js/2.d502977b.chunk.js",
-    "static/js/2.d502977b.chunk.js.map": "/flood-game/static/js/2.d502977b.chunk.js.map",
+    "main.css": "/flood-game/static/css/main.0452d98b.chunk.css",
+    "main.js": "/flood-game/static/js/main.094fd9cd.chunk.js",
+    "main.js.map": "/flood-game/static/js/main.094fd9cd.chunk.js.map",
+    "runtime-main.js": "/flood-game/static/js/runtime-main.ba989b55.js",
+    "runtime-main.js.map": "/flood-game/static/js/runtime-main.ba989b55.js.map",
+    "static/css/2.e9080ce4.chunk.css": "/flood-game/static/css/2.e9080ce4.chunk.css",
+    "static/js/2.fa1cc359.chunk.js": "/flood-game/static/js/2.fa1cc359.chunk.js",
+    "static/js/2.fa1cc359.chunk.js.map": "/flood-game/static/js/2.fa1cc359.chunk.js.map",
     "index.html": "/flood-game/index.html",
-    "precache-manifest.638521bc93d4f258a68d7aaaaeaaaacd.js": "/flood-game/precache-manifest.638521bc93d4f258a68d7aaaaeaaaacd.js",
-    "service-worker.js": "/flood-game/service-worker.js",
-    "static/css/2.d6500151.chunk.css.map": "/flood-game/static/css/2.d6500151.chunk.css.map",
-    "static/css/main.8ecc19c2.chunk.css.map": "/flood-game/static/css/main.8ecc19c2.chunk.css.map",
-    "static/js/2.d502977b.chunk.js.LICENSE.txt": "/flood-game/static/js/2.d502977b.chunk.js.LICENSE.txt"
+    "static/css/2.e9080ce4.chunk.css.map": "/flood-game/static/css/2.e9080ce4.chunk.css.map",
+    "static/css/main.0452d98b.chunk.css.map": "/flood-game/static/css/main.0452d98b.chunk.css.map",
+    "static/js/2.fa1cc359.chunk.js.LICENSE.txt": "/flood-game/static/js/2.fa1cc359.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e71e178a.js",
-    "static/css/2.d6500151.chunk.css",
-    "static/js/2.d502977b.chunk.js",
-    "static/css/main.8ecc19c2.chunk.css",
-    "static/js/main.ea0b7ee6.chunk.js"
+    "static/js/runtime-main.ba989b55.js",
+    "static/css/2.e9080ce4.chunk.css",
+    "static/js/2.fa1cc359.chunk.js",
+    "static/css/main.0452d98b.chunk.css",
+    "static/js/main.094fd9cd.chunk.js"
   ]
 }

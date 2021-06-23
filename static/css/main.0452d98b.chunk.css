@@ -1,0 +1,2 @@
+.Grid{width:100%;height:100%}.Grid-svg{width:min(100%,40em);height:auto;margin:auto}.Grid rect[data-color="0"]{fill:#f33}.Grid rect[data-color="1"]{fill:#ff3}.Grid rect[data-color="2"]{fill:#3f3}.Grid rect[data-color="3"]{fill:#3ff}.Grid rect[data-color="4"]{fill:#33f}.Grid rect[data-color="5"]{fill:#f3f}.Grid rect{transition:fill .1s linear calc(var(--distance)*50ms)}.Game{width:100%}#root,.App,body,html{width:100%;height:100%}#root,body,html{margin:0;padding:0}body{font-family:sans-serif;touch-action:manipulation}
+/*# sourceMappingURL=main.0452d98b.chunk.css.map */
