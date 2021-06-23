@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { getBoardColor, getBoardHeight, getBoardWidth } from '../board';
 import { Board } from '../types';
 import './GridSVG.css';

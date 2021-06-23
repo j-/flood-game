@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store';

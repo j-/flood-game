@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Color } from '../types';
 import { getSeed, getBoard, getMoves, isGameOver, isGameWon, canUndoLastMove } from '../store';
@@ -15,22 +15,22 @@ const Game: React.FC = () => {
   const gameWon = useSelector(isGameWon);
   const enableUndo = useSelector(canUndoLastMove);
 
-  const handleClickUndo = React.useCallback<React.MouseEventHandler>((e) => {
+  const handleClickUndo = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(undoMove());
   }, [dispatch]);
 
-  const handleClickReset = React.useCallback<React.MouseEventHandler>((e) => {
+  const handleClickReset = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(startGame(seed));
   }, [dispatch, seed]);
 
-  const handleClickNewGame = React.useCallback<React.MouseEventHandler>((e) => {
+  const handleClickNewGame = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(startGame());
   }, [dispatch]);
 
-  const handleClickColor = React.useCallback((color: Color) => {
+  const handleClickColor = useCallback((color: Color) => {
     dispatch(flood(color));
   }, [dispatch]);
 
