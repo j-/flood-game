@@ -18,20 +18,24 @@ const Game: React.FC = () => {
   const handleClickUndo = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(undoMove());
+    dataLayer.push({ event: 'undo_move' });
   }, [dispatch]);
 
   const handleClickReset = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(startGame(seed));
+    dataLayer.push({ event: 'reset_game' });
   }, [dispatch, seed]);
 
   const handleClickNewGame = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(startGame());
+    dataLayer.push({ event: 'new_game' });
   }, [dispatch]);
 
   const handleClickColor = useCallback((color: Color) => {
     dispatch(flood(color));
+    dataLayer.push({ event: 'game_move' });
   }, [dispatch]);
 
   if (!board) return null;
