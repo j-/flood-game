@@ -24,7 +24,7 @@ const Game: React.FC = () => {
   const handleClickReset = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
     dispatch(startGame(seed));
-    dataLayer.push({ event: 'reset_game' });
+    dataLayer.push({ event: 'restart_game' });
   }, [dispatch, seed]);
 
   const handleClickNewGame = useCallback<React.MouseEventHandler>((e) => {
