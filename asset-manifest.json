@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/flood-game/static/css/main.0452d98b.chunk.css",
-    "main.js": "/flood-game/static/js/main.039c7377.chunk.js",
-    "main.js.map": "/flood-game/static/js/main.039c7377.chunk.js.map",
+    "main.js": "/flood-game/static/js/main.f81233f3.chunk.js",
+    "main.js.map": "/flood-game/static/js/main.f81233f3.chunk.js.map",
     "runtime-main.js": "/flood-game/static/js/runtime-main.ba989b55.js",
     "runtime-main.js.map": "/flood-game/static/js/runtime-main.ba989b55.js.map",
     "static/css/2.e9080ce4.chunk.css": "/flood-game/static/css/2.e9080ce4.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.e9080ce4.chunk.css",
     "static/js/2.fa1cc359.chunk.js",
     "static/css/main.0452d98b.chunk.css",
-    "static/js/main.039c7377.chunk.js"
+    "static/js/main.f81233f3.chunk.js"
   ]
 }
