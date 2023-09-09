@@ -8,9 +8,9 @@
   aspect-ratio: 1/1;
 }
 
-.ColorButtons-button[value="0"] { background-color: hsl(0, 100%, 60%); }
-.ColorButtons-button[value="1"] { background-color: hsl(60, 100%, 60%); }
-.ColorButtons-button[value="2"] { background-color: hsl(120, 100%, 60%); }
-.ColorButtons-button[value="3"] { background-color: hsl(180, 100%, 60%); }
-.ColorButtons-button[value="4"] { background-color: hsl(240, 100%, 60%); }
-.ColorButtons-button[value="5"] { background-color: hsl(300, 100%, 60%); }
+.ColorButtons-button[value="0"] { background-color: var(--color-red); }
+.ColorButtons-button[value="1"] { background-color: var(--color-orange); }
+.ColorButtons-button[value="2"] { background-color: var(--color-yellow); }
+.ColorButtons-button[value="3"] { background-color: var(--color-green); }
+.ColorButtons-button[value="4"] { background-color: var(--color-blue); }
+.ColorButtons-button[value="5"] { background-color: var(--color-purple); }

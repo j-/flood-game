@@ -11,3 +11,12 @@ body {
   font-family: sans-serif;
   touch-action: manipulation;
 }
+
+:root {
+  --color-red: hsl(0, 100%, 60%);
+  --color-orange: hsl(60, 100%, 60%);
+  --color-yellow: hsl(120, 100%, 60%);
+  --color-green: hsl(180, 100%, 60%);
+  --color-blue: hsl(240, 100%, 60%);
+  --color-purple: hsl(300, 100%, 60%);
+}
