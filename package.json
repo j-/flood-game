@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "build/index.html",
+  "main": "index.html",
   "homepage": "https://skeoh.com/flood-game",
   "dependencies": {
     "bootstrap": "4.4.1",
