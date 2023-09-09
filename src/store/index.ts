@@ -8,7 +8,7 @@ export interface RootReducerState {
   seed: string;
   board: Board | null;
   lastBoard: Board | null;
-  moves: number;
+  moves: Color[];
   isGameOver: boolean;
   isGameWon: boolean;
   currentColor: Color | null;
@@ -18,7 +18,7 @@ export const DEFAULT_STATE: RootReducerState = {
   seed: '',
   lastBoard: null,
   board: null,
-  moves: 0,
+  moves: [],
   isGameOver: false,
   isGameWon: false,
   currentColor: null,
@@ -39,7 +39,7 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
       board,
       currentColor,
       lastBoard: null,
-      moves: 0,
+      moves: [],
       isGameOver: false,
       isGameWon: false,
     };
@@ -55,19 +55,19 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
     // Must choose a new color
     if (currentColor === color) return state;
     const newBoard = flood(board, color);
-    const newMoves = moves + 1;
+    const newMoveCount = moves.length + 1;
     if (isAllOneColor(newBoard)) {
       isGameOver = true;
       isGameWon = true;
       board = null;
-    } else if (newMoves >= 25) {
+    } else if (newMoveCount >= 25) {
       isGameOver = true;
     }
     return {
       ...state,
       lastBoard: board,
       board: newBoard,
-      moves: newMoves,
+      moves: newMoveCount === moves.length ? moves : [...moves, color],
       currentColor: color,
       isGameOver,
       isGameWon,
@@ -81,7 +81,7 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
       ...state,
       lastBoard: null,
       board: lastBoard,
-      moves: moves - 1,
+      moves: moves.slice(0, -1),
       currentColor: getBoardColor(lastBoard, 0, 0),
     };
   }
@@ -92,7 +92,7 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
 export default reducer;
 
 export const getSeed = (state: RootReducerState) => state.seed;
-export const getMoveCount = (state: RootReducerState) => state.moves;
+export const getMoveCount = (state: RootReducerState) => state.moves.length;
 export const getBoard = (state: RootReducerState) => state.board;
 export const isGameOver = (state: RootReducerState) => state.isGameOver;
 export const isGameWon = (state: RootReducerState) => state.isGameWon;
