@@ -91,10 +91,10 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
 
 export default reducer;
 
-export const getSeed = (state: RootReducerState) => state.seed;
-export const getMoveCount = (state: RootReducerState) => state.moves.length;
-export const getBoard = (state: RootReducerState) => state.board;
-export const isGameOver = (state: RootReducerState) => state.isGameOver;
-export const isGameWon = (state: RootReducerState) => state.isGameWon;
-export const getCurrentColor = (state: RootReducerState) => state.currentColor;
-export const canUndoLastMove = (state: RootReducerState) => state.lastBoard !== null;
+export const getSeed = (state: RootReducerState): string => state.seed;
+export const getMoveCount = (state: RootReducerState): number => state.moves.length;
+export const getBoard = (state: RootReducerState): Board | null => state.board;
+export const isGameOver = (state: RootReducerState): boolean => state.isGameOver;
+export const isGameWon = (state: RootReducerState): boolean => state.isGameWon;
+export const getCurrentColor = (state: RootReducerState): Color | null => state.currentColor;
+export const canUndoLastMove = (state: RootReducerState): boolean => state.lastBoard !== null;
