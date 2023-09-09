@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Color } from '../types';
+import { getTodaysSeed } from '../seed';
 import { getSeed, getBoard, getMoveCount, isGameOver, isGameWon, canUndoLastMove } from '../store';
 import { startGame, flood, undoMove } from '../store/actions';
 import Grid from './Grid';
@@ -34,6 +35,13 @@ const Game: React.FC = () => {
     dataLayer.push({ event: 'new_game' });
   }, [dispatch]);
 
+  const handleClickTodaysGame = useCallback<React.MouseEventHandler>((e) => {
+    e.preventDefault();
+    const seed = getTodaysSeed();
+    dispatch(startGame(seed));
+    dataLayer.push({ event: 'todays_game' });
+  }, [dispatch]);
+
   const handleClickColor = useCallback((color: Color) => {
     dispatch(flood(color));
     dataLayer.push({ event: 'game_move' });
@@ -45,11 +53,18 @@ const Game: React.FC = () => {
     <div className="Game">
       <nav className="navbar navbar-light bg-light">
         <button
-          className="btn btn-dark mr-auto"
+          className="btn btn-dark mr-1"
           type="button"
           onClick={handleClickNewGame}
         >
           New game
+        </button>
+        <button
+          className="btn btn-light mr-auto"
+          type="button"
+          onClick={handleClickTodaysGame}
+        >
+          Today's game
         </button>
         <button
           className="btn btn-light ml-1"
