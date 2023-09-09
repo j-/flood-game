@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Color } from '../types';
-import { getSeed, getBoard, getMoves, isGameOver, isGameWon, canUndoLastMove } from '../store';
+import { getSeed, getBoard, getMoveCount, isGameOver, isGameWon, canUndoLastMove } from '../store';
 import { startGame, flood, undoMove } from '../store/actions';
 import Grid from './Grid';
 import './Game.css';
@@ -10,7 +10,7 @@ const Game: React.FC = () => {
   const dispatch = useDispatch();
   const seed = useSelector(getSeed);
   const board = useSelector(getBoard);
-  const moves = useSelector(getMoves);
+  const moves = useSelector(getMoveCount);
   const gameOver = useSelector(isGameOver);
   const gameWon = useSelector(isGameWon);
   const enableUndo = useSelector(canUndoLastMove);

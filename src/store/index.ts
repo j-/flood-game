@@ -92,7 +92,7 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
 export default reducer;
 
 export const getSeed = (state: RootReducerState) => state.seed;
-export const getMoves = (state: RootReducerState) => state.moves;
+export const getMoveCount = (state: RootReducerState) => state.moves;
 export const getBoard = (state: RootReducerState) => state.board;
 export const isGameOver = (state: RootReducerState) => state.isGameOver;
 export const isGameWon = (state: RootReducerState) => state.isGameWon;
