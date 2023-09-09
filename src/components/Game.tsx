@@ -4,6 +4,7 @@ import { Color } from '../types';
 import { getSeed, getBoard, getMoveCount, isGameOver, isGameWon, canUndoLastMove } from '../store';
 import { startGame, flood, undoMove } from '../store/actions';
 import Grid from './Grid';
+import ColorButtons from './ColorButtons';
 import './Game.css';
 
 const Game: React.FC = () => {
@@ -72,7 +73,10 @@ const Game: React.FC = () => {
           onClick={handleClickColor}
         />
       </div>
-      <div className="d-flex flex-column align-items-center">
+      <div className="mt-4 mb-4">
+        <ColorButtons />
+      </div>
+      <div className="mt-4 mb-4 d-flex flex-column align-items-center">
         <span className="display-4">{moves} / 25</span>
         {gameOver && <strong className="mr-3">Game over</strong>}
         {gameWon && <strong className="mr-3">You win</strong>}
