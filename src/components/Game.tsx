@@ -53,21 +53,21 @@ const Game: React.FC = () => {
     <div className="Game">
       <nav className="navbar navbar-light bg-light">
         <button
-          className="btn btn-dark mr-1"
+          className="btn btn-dark mr-1 my-2"
           type="button"
           onClick={handleClickNewGame}
         >
           New game
         </button>
         <button
-          className="btn btn-light mr-auto"
+          className="btn btn-light mr-auto my-2"
           type="button"
           onClick={handleClickTodaysGame}
         >
           Today's game
         </button>
         <button
-          className="btn btn-light ml-1"
+          className="btn btn-light ml-auto my-2"
           type="button"
           disabled={!enableUndo}
           onClick={handleClickUndo}
@@ -75,7 +75,7 @@ const Game: React.FC = () => {
           Undo move
         </button>
         <button
-          className="btn btn-light ml-1"
+          className="btn btn-light ml-1 my-2"
           type="button"
           onClick={handleClickReset}
         >
