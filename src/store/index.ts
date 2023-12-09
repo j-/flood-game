@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import seedrandom from 'seedrandom';
-import { buildBoard, flood, getBoardColor, isAllOneColor, randomiseBoard } from '../board';
+import { buildBoard, flood, getBoardColor, getBoardHeight, getBoardWidth, isAllOneColor, randomiseBoard } from '../board';
 import { DEFAULT_BOARD_SIZE, DEFAULT_MOVE_LIMIT } from '../constants';
 import { serialize } from '../serialize';
 import { Board, Color } from '../types';
@@ -101,3 +101,5 @@ export const isGameOver = (state: RootReducerState): boolean => state.isGameOver
 export const isGameWon = (state: RootReducerState): boolean => state.isGameWon;
 export const getCurrentColor = (state: RootReducerState): Color | null => state.currentColor;
 export const canUndoLastMove = (state: RootReducerState): boolean => state.lastBoard !== null;
+export const getWidth = (state: RootReducerState): number | null => state.board ? getBoardWidth(state.board) : null;
+export const getHeight = (state: RootReducerState): number | null => state.board ? getBoardHeight(state.board) : null;

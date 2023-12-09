@@ -8,9 +8,10 @@ import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css';
 import { startGame } from './store/actions';
+import { trackHighScores } from './track-high-scores';
 
 const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, trackHighScores),
 ));
 
 store.dispatch(startGame());

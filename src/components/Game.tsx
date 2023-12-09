@@ -8,6 +8,7 @@ import { Color } from '../types';
 import ColorButtons from './ColorButtons';
 import './Game.css';
 import Grid from './Grid';
+import { useHighScoreConnected } from '../use-high-score';
 
 const Game: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Game: React.FC = () => {
   const gameOver = useSelector(isGameOver);
   const gameWon = useSelector(isGameWon);
   const enableUndo = useSelector(canUndoLastMove);
+  const highScore = useHighScoreConnected();
 
   const handleClickUndo = useCallback<React.MouseEventHandler>((e) => {
     e.preventDefault();
@@ -96,6 +98,7 @@ const Game: React.FC = () => {
         <span className="display-4">{moves} / {DEFAULT_MOVE_LIMIT}</span>
         {gameOver && <strong className="mr-3">Game over</strong>}
         {gameWon && <strong className="mr-3">You win</strong>}
+        {highScore ? <strong>Your high score: {String(highScore)}</strong> : null}
       </div>
     </div>
   );
