@@ -1,8 +1,10 @@
 import { Reducer } from 'redux';
 import seedrandom from 'seedrandom';
-import { isActionReset, isActionStartGame, isActionFlood, isActionUndoMove } from './actions';
+import { buildBoard, flood, getBoardColor, isAllOneColor, randomiseBoard } from '../board';
+import { DEFAULT_BOARD_SIZE, DEFAULT_MOVE_LIMIT } from '../constants';
+import { serialize } from '../serialize';
 import { Board, Color } from '../types';
-import { buildBoard, randomiseBoard, getBoardColor, flood, isAllOneColor } from '../board';
+import { isActionFlood, isActionReset, isActionStartGame, isActionUndoMove } from './actions';
 
 export interface RootReducerState {
   seed: string;
@@ -31,7 +33,7 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
 
   if (isActionStartGame(action)) {
     const { seed } = action.data;
-    const board = buildBoard(14, 14);
+    const board = buildBoard(DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE);
     randomiseBoard(board, seedrandom(seed));
     const currentColor = getBoardColor(board, 0, 0);
     return {
@@ -60,7 +62,7 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
       isGameOver = true;
       isGameWon = true;
       board = null;
-    } else if (newMoveCount >= 25) {
+    } else if (newMoveCount >= DEFAULT_MOVE_LIMIT) {
       isGameOver = true;
     }
     return {
@@ -93,6 +95,7 @@ export default reducer;
 
 export const getSeed = (state: RootReducerState): string => state.seed;
 export const getMoveCount = (state: RootReducerState): number => state.moves.length;
+export const getMoveState = (state: RootReducerState): string => serialize(state.moves);
 export const getBoard = (state: RootReducerState): Board | null => state.board;
 export const isGameOver = (state: RootReducerState): boolean => state.isGameOver;
 export const isGameWon = (state: RootReducerState): boolean => state.isGameWon;
