@@ -15,6 +15,7 @@ export const useHighScore = (width: number, height: number, seed: string, gameOv
 
     (async () => {
       const moves = await get(width, height, seed);
+      if (!moves) return;
       const { length } = deserialize(moves);
       if (!mounted) return;
       setScore(length);

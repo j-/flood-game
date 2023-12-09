@@ -15,8 +15,7 @@ export async function get(width: number, height: number, key: string) {
       db.createObjectStore(objectStoreName);
     },
   });
-  const res = await db.get(objectStoreName, key);
-  return res;
+  return db.get(objectStoreName, key);
 }
 
 export async function set(width: number, height: number, key: string, val: string) {
