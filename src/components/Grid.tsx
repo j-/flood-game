@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { getBoardColor, getBoardHeight, getBoardWidth } from '../board';
 import { Board, Color } from '../types';
 import './Grid.css';
+import { CirclePath } from './CirclePath';
 
 export interface Props {
   board: Board;
@@ -50,6 +51,19 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
     }
   }
 
+  const start = (
+    <CirclePath
+      outerRadius={size * 0.3}
+      innerRadius={size * 0.2}
+      x={size * 0.2}
+      y={size * 0.2}
+      fill="#fff"
+      style={{
+        pointerEvents: 'none',
+      }}
+    />
+  );
+
   return (
     <div className="Grid d-flex align-items-center">
       <svg
@@ -60,6 +74,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
         preserveAspectRatio="none"
       >
         {children}
+        {start}
       </svg>
     </div>
   );
