@@ -55,8 +55,8 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
     <CirclePath
       outerRadius={size * 0.3}
       innerRadius={size * 0.2}
-      x={size * 0.2}
-      y={size * 0.2}
+      cx={size / 2}
+      cy={size / 2}
       fill="#fff"
       style={{
         pointerEvents: 'none',
