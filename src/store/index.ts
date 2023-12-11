@@ -61,7 +61,6 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
     if (isAllOneColor(newBoard)) {
       isGameOver = true;
       isGameWon = true;
-      board = null;
     } else if (newMoveCount >= DEFAULT_MOVE_LIMIT) {
       isGameOver = true;
     }
@@ -77,6 +76,8 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
   }
 
   if (isActionUndoMove(action)) {
+    // Must be allowed to undo last move.
+    if (!canUndoLastMove(state)) return state;
     const { lastBoard, moves } = state;
     if (!lastBoard) return state;
     return {
@@ -85,6 +86,8 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
       board: lastBoard,
       moves: moves.slice(0, -1),
       currentColor: getBoardColor(lastBoard, 0, 0),
+      isGameOver: false,
+      isGameWon: false,
     };
   }
 
