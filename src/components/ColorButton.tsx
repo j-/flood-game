@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { isAnyColor } from '../store';
 import { Color, colorNames } from '../types';
 import { CirclePath } from './CirclePath';
 import './ColorButton.css';
@@ -15,6 +17,7 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
 }) => {
   const name = colorNames.get(color);
   const title = `Flood with ${name?.toLowerCase()}`;
+  const hasColor = useSelector(isAnyColor(color));
 
   return (
     <button
@@ -22,6 +25,7 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
       type="button"
       value={color}
       title={title}
+      disabled={!hasColor}
       {...props}
     >
       <span className="sr-only">name</span>

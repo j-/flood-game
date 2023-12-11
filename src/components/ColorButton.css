@@ -14,3 +14,8 @@
   width: 100%;
   height: 100%;
 }
+
+.ColorButton[disabled] {
+  opacity: 0.25 !important;
+  cursor: initial;
+}

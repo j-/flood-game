@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import seedrandom from 'seedrandom';
-import { buildBoard, flood, getBoardColor, getBoardHeight, getBoardWidth, isAllOneColor, randomiseBoard } from '../board';
+import { boardHasColor, buildBoard, flood, getBoardColor, getBoardHeight, getBoardWidth, isAllOneColor, randomiseBoard } from '../board';
 import { DEFAULT_BOARD_SIZE, DEFAULT_MOVE_LIMIT } from '../constants';
 import { serialize } from '../serialize';
 import { Board, Color } from '../types';
@@ -56,6 +56,8 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
     if (isGameOver) return state;
     // Must choose a new color
     if (currentColor === color) return state;
+    // Must choose a color which has remaining squares
+    if (!boardHasColor(board, color)) return state;
     const newBoard = flood(board, color);
     const newMoveCount = moves.length + 1;
     if (isAllOneColor(newBoard)) {
@@ -106,3 +108,4 @@ export const getCurrentColor = (state: RootReducerState): Color | null => state.
 export const canUndoLastMove = (state: RootReducerState): boolean => state.lastBoard !== null;
 export const getWidth = (state: RootReducerState): number | null => state.board ? getBoardWidth(state.board) : null;
 export const getHeight = (state: RootReducerState): number | null => state.board ? getBoardHeight(state.board) : null;
+export const isAnyColor = (color: Color) => (state: RootReducerState): boolean | null => state.board ? boardHasColor(state.board, color) : null;

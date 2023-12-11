@@ -38,6 +38,18 @@ export const randomiseBoard = (board: Board, rng = Math.random): void => {
   }
 };
 
+export const boardHasColor = (board: Board, target: Color): boolean => {
+  const width = getBoardWidth(board);
+  const height = getBoardHeight(board);
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const color = getBoardColor(board, x, y);
+      if (color === target) return true;
+    }
+  }
+  return false;
+};
+
 export const isAllOneColor = (board: Board): boolean => {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
