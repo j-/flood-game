@@ -16,3 +16,12 @@ export const getRandomColor = (rng = Math.random): Color => {
   const color = COLOR_ARRAY[i];
   return color;
 };
+
+export const colorVarMap = new Map<Color, string>([
+  [Color.RED, 'var(--color-red)'],
+  [Color.ORANGE, 'var(--color-orange)'],
+  [Color.YELLOW, 'var(--color-yellow)'],
+  [Color.GREEN, 'var(--color-green)'],
+  [Color.BLUE, 'var(--color-blue)'],
+  [Color.PURPLE, 'var(--color-purple)'],
+]);

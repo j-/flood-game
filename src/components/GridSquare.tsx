@@ -1,25 +1,26 @@
+import { motion } from 'framer-motion';
+import { colorVarMap } from '../color';
 import { Color } from '../types';
 import './GridSquare.css';
 
-export type GridSquareProps = Omit<React.SVGAttributes<SVGRectElement>, 'color'> & {
+export type GridSquareProps = Omit<React.ComponentProps<typeof motion.rect>, 'color'> & {
   distance: number;
   color: Color;
 };
-
-interface CustomCSSProperties extends React.CSSProperties {
-  '--distance': number;
-}
 
 export const GridSquare: React.FC<GridSquareProps> = ({
   distance,
   color,
   ...props
 }) => {
+  const fill = colorVarMap.get(color) ?? '#fff';
+
   return (
-    <rect
+    <motion.rect
       className="GridSquare"
-      style={{ '--distance': distance } as CustomCSSProperties}
-      data-color={color}
+      initial={{ fill: '#fff' }}
+      animate={{ fill }}
+      transition={{ duration: 0.125, delay: distance * 0.050 }}
       {...props}
     />
   );

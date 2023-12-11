@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { getBoardColor, getBoardHeight, getBoardWidth } from '../board';
 import { Board, Color } from '../types';
-import './Grid.css';
 import { CirclePath } from './CirclePath';
+import './Grid.css';
 import { GridSquare } from './GridSquare';
 
 export interface Props {
@@ -19,7 +19,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
   const WIDTH = width * size;
   const HEIGHT = height * size;
   const VIEWBOX = `0 0 ${WIDTH} ${HEIGHT}`;
-  const children: React.ReactChild[] = [];
+  const children: React.ReactNode[] = [];
 
   const handleClick = useCallback<React.ReactEventHandler<SVGRectElement>>((e) => {
     const x = Number(e.currentTarget.dataset.x);

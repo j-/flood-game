@@ -1,11 +1,3 @@
-.GridSquare[data-color="0"] { fill: var(--color-red); }
-.GridSquare[data-color="1"] { fill: var(--color-orange); }
-.GridSquare[data-color="2"] { fill: var(--color-yellow); }
-.GridSquare[data-color="3"] { fill: var(--color-green); }
-.GridSquare[data-color="4"] { fill: var(--color-blue); }
-.GridSquare[data-color="5"] { fill: var(--color-purple); }
-
 .GridSquare {
-  transition: fill 100ms linear calc(var(--distance) * 50ms);
   cursor: pointer;
 }
