@@ -1,6 +1,7 @@
 import React from 'react';
 import { Color, colorNames } from '../types';
 import { CirclePath } from './CirclePath';
+import './ColorButton.css';
 
 export type ColorButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'> & {
   color: Color;
@@ -17,7 +18,7 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
 
   return (
     <button
-      className="ColorButtons-button btn"
+      className="ColorButton btn"
       type="button"
       value={color}
       title={title}
