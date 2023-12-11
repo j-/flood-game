@@ -3,14 +3,11 @@ import { getBoardColor, getBoardHeight, getBoardWidth } from '../board';
 import { Board, Color } from '../types';
 import './Grid.css';
 import { CirclePath } from './CirclePath';
+import { GridSquare } from './GridSquare';
 
 export interface Props {
   board: Board;
   onClick: (color: Color) => void;
-}
-
-interface CustomCSSProperties extends React.CSSProperties {
-  '--distance': number;
 }
 
 const SIZE = 35;
@@ -34,7 +31,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
     for (let x = 0; x < width; x++) {
       const distance = Math.sqrt(x ** 2 + y ** 2);
       children.push(
-        <rect
+        <GridSquare
           key={x + ',' + y}
           x={x * size - 0.5}
           y={y * size - 0.5}
@@ -42,10 +39,11 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
           height={size + 1}
           onClick={handleClick}
           onTouchStart={handleClick}
-          style={{ '--distance': distance } as CustomCSSProperties}
           data-x={x}
           data-y={y}
-          data-color={getBoardColor(board, x, y)}
+
+          distance={distance}
+          color={getBoardColor(board, x, y)}
         />
       );
     }

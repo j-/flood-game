@@ -8,15 +8,3 @@
   height: auto;
   margin: auto;
 }
-
-.Grid rect[data-color="0"] { fill: var(--color-red); }
-.Grid rect[data-color="1"] { fill: var(--color-orange); }
-.Grid rect[data-color="2"] { fill: var(--color-yellow); }
-.Grid rect[data-color="3"] { fill: var(--color-green); }
-.Grid rect[data-color="4"] { fill: var(--color-blue); }
-.Grid rect[data-color="5"] { fill: var(--color-purple); }
-
-.Grid rect {
-  transition: fill 100ms linear calc(var(--distance) * 50ms);
-  cursor: pointer;
-}
