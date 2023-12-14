@@ -1,4 +1,4 @@
-import { isAllOneColor } from './board';
+import { areBoardsEqual, getValidMoves, isAllOneColor } from './board';
 
 describe('isAllOneColor()', () => {
   it('returns true for a 1x1 board', () => {
@@ -35,5 +35,38 @@ describe('isAllOneColor()', () => {
     expect(isAllOneColor([[3, 3, 3], [3, 3, 3], [3, 3, 3]])).toBe(true);
     expect(isAllOneColor([[4, 4, 4], [4, 4, 4], [4, 4, 4]])).toBe(true);
     expect(isAllOneColor([[5, 5, 5], [5, 5, 5], [5, 5, 5]])).toBe(true);
+  });
+});
+
+describe('getValidMoves()', () => {
+  it('yields all board colors except the current color', () => {
+    const actual = Array.from(getValidMoves([[0, 1, 2]]));
+    expect(actual).toEqual([1, 2]);
+  });
+});
+
+describe('areBoardsEqual()', () => {
+  it('returns false if rows are transposed', () => {
+    const actual = areBoardsEqual(
+      [[0, 0], [1, 1]],
+      [[1, 1], [0, 0]],
+    );
+    expect(actual).toBe(false);
+  });
+
+  it('returns false if boards are of inequal dimensions', () => {
+    const actual = areBoardsEqual(
+      [[0, 0], [0, 0]],
+      [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    );
+    expect(actual).toBe(false);
+  });
+
+  it('returns true if boards are the same', () => {
+    const actual = areBoardsEqual(
+      [[0, 1, 2]],
+      [[0, 1, 2]],
+    );
+    expect(actual).toBe(true);
   });
 });

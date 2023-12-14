@@ -1,9 +1,9 @@
 import { Board, Color } from './types';
 import { getRandomColor } from './color';
 
-export const getBoardWidth = (board: Board): number => board[0].length;
+export const getBoardWidth = (board: Board): number => board[0] ? board[0].length : 0;
 export const getBoardHeight = (board: Board): number => board.length;
-export const getBoardColor = (board: Board, x: number, y: number): Color => board[y][x];
+export const getBoardColor = (board: Board, x: number, y: number): Color | null => board[y]?.[x] ?? null;
 export const setBoardColor = (board: Board, x: number, y: number, color: Color): void => { board[y][x] = color; };
 
 export function* iterateCoord(length: number) {
@@ -133,3 +133,33 @@ export const flood = (board: Board, replacement: Color): Board => {
   }
   return copy;
 };
+
+export function* getMoves() {
+  yield Color.RED;
+  yield Color.ORANGE;
+  yield Color.YELLOW;
+  yield Color.GREEN;
+  yield Color.BLUE;
+  yield Color.PURPLE;
+}
+
+export function* getValidMoves(board: Board) {
+  const currentColor = getBoardColor(board, 0, 0);
+  for (const move of getMoves()) {
+    if (move === currentColor) continue;
+    if (boardHasColor(board, move)) yield move;
+  }
+}
+
+export function areBoardsEqual(left: Board, right: Board) {
+  const leftWidth = getBoardWidth(left);
+  if (leftWidth != getBoardWidth(right)) return false;
+  const leftHeight = getBoardHeight(left);
+  if (leftHeight != getBoardHeight(right)) return false;
+  for (const [x, y] of iterateCoords(leftWidth, leftHeight)) {
+    if (getBoardColor(left, x, y) !== getBoardColor(right, x, y)) {
+      return false;
+    }
+  }
+  return true;
+}

@@ -24,7 +24,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
   const handleClick = useCallback<React.ReactEventHandler<SVGRectElement>>((e) => {
     const x = Number(e.currentTarget.dataset.x);
     const y = Number(e.currentTarget.dataset.y);
-    onClick(getBoardColor(board, x, y));
+    onClick(getBoardColor(board, x, y)!);
   }, [board, onClick]);
 
   for (let y = 0; y < height; y++) {
@@ -43,7 +43,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
           data-y={y}
 
           distance={distance}
-          color={getBoardColor(board, x, y)}
+          color={getBoardColor(board, x, y)!}
         />
       );
     }
