@@ -6,22 +6,30 @@ export const getBoardHeight = (board: Board): number => board.length;
 export const getBoardColor = (board: Board, x: number, y: number): Color => board[y][x];
 export const setBoardColor = (board: Board, x: number, y: number, color: Color): void => { board[y][x] = color; };
 
-export const buildBoard = (width: number, height: number): Board => {
-  const board = [];
-  for (let y = 0; y < height; y++) {
-    const row = [];
-    for (let x = 0; x < width; x++) {
-      row.push(0);
-    }
-    board.push(row);
+export function* iterateCoord(length: number) {
+  for (let i = 0; i < length; i++) {
+    yield i;
   }
-  return board;
+}
+
+export function* iterateCoords(width: number, height: number) {
+  for (const y of iterateCoord(height)) {
+    for (const x of iterateCoord(width)) {
+      yield [x, y];
+    }
+  }
+}
+
+export const buildBoard = (width: number, height: number): Board => {
+  return Array.from(iterateCoord(height), () => {
+    return Array.from(iterateCoord(width), () => 0);
+  });
 };
 
 export const copyBoard = (board: Board): Board => {
   const copy: Board = [];
   const height = getBoardHeight(board);
-  for (let y = 0; y < height; y++) {
+  for (const y of iterateCoord(height)) {
     copy.push([...board[y]]);
   }
   return copy;
@@ -30,22 +38,18 @@ export const copyBoard = (board: Board): Board => {
 export const randomiseBoard = (board: Board, rng = Math.random): void => {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const color = getRandomColor(rng);
-      setBoardColor(board, x, y, color);
-    }
+  for (const [x, y] of iterateCoords(width, height)) {
+    const color = getRandomColor(rng);
+    setBoardColor(board, x, y, color);
   }
 };
 
 export const boardHasColor = (board: Board, target: Color): boolean => {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const color = getBoardColor(board, x, y);
-      if (color === target) return true;
-    }
+  for (const [x, y] of iterateCoords(width, height)) {
+    const color = getBoardColor(board, x, y);
+    if (color === target) return true;
   }
   return false;
 };
@@ -54,11 +58,9 @@ export const isAllOneColor = (board: Board): boolean => {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
   const target = getBoardColor(board, 0, 0);
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const color = getBoardColor(board, x, y);
-      if (color !== target) return false;
-    }
+  for (const [x, y] of iterateCoords(width, height)) {
+    const color = getBoardColor(board, x, y);
+    if (color !== target) return false;
   }
   return true;
 };
