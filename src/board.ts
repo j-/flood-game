@@ -1,5 +1,7 @@
-import { Board, Color } from './types';
+import { type Board, Color } from './types';
 import { getRandomColor } from './color';
+
+export type Coords = [x: number, y: number];
 
 export function getBoardWidth(board: Board): number {
   return board[0] ? board[0].length : 0;
@@ -17,17 +19,36 @@ export function setBoardColor(board: Board, x: number, y: number, color: Color):
   board[y][x] = color;
 }
 
-export function* iterateCoord(length: number) {
+export function* iterateCoord(length: number): IterableIterator<number> {
   for (let i = 0; i < length; i++) {
     yield i;
   }
 }
 
-export function* iterateCoords(width: number, height: number) {
+export function* iterateCoords(width: number, height: number): IterableIterator<Coords> {
   for (const y of iterateCoord(height)) {
     for (const x of iterateCoord(width)) {
       yield [x, y];
     }
+  }
+}
+
+export function* iterateValidNeighboringCoords(w: number, h: number, x: number, y: number): IterableIterator<Coords> {
+  if (y > 0) {
+    // N
+    yield [x, y - 1];
+  }
+  if (x < w - 1) {
+    // E
+    yield [x + 1, y];
+  }
+  if (y < h - 1) {
+    // S
+    yield [x, y + 1];
+  }
+  if (x > 0) {
+    // W
+    yield [x - 1, y];
   }
 }
 
@@ -145,7 +166,7 @@ export function flood(board: Board, replacement: Color): Board {
   return copy;
 }
 
-export function* getMoves() {
+export function* getMoves(): IterableIterator<Color> {
   yield Color.RED;
   yield Color.ORANGE;
   yield Color.YELLOW;
@@ -154,7 +175,7 @@ export function* getMoves() {
   yield Color.PURPLE;
 }
 
-export function* getValidMoves(board: Board) {
+export function* getValidMoves(board: Board): IterableIterator<Color> {
   const currentColor = getBoardColor(board, 0, 0);
   for (const move of getMoves()) {
     if (move === currentColor) continue;
@@ -162,7 +183,7 @@ export function* getValidMoves(board: Board) {
   }
 }
 
-export function areBoardsEqual(left: Board, right: Board) {
+export function areBoardsEqual(left: Board, right: Board): boolean {
   const leftWidth = getBoardWidth(left);
   if (leftWidth != getBoardWidth(right)) return false;
   const leftHeight = getBoardHeight(left);
