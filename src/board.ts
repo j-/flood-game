@@ -126,10 +126,10 @@ export function flood(board: Board, replacement: Color): Board {
   if (target === replacement) return copy;
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
-  const queue = [[0, 0]];
+  const queue: Coords[] = [[0, 0]];
   setBoardColor(copy, 0, 0, replacement);
   while (queue.length) {
-    const [x, y] = queue.shift() as [number, number];
+    const [x, y] = queue.shift() as Coords;
     // East
     if (x + 1 < width) {
       const color = getBoardColor(copy, x + 1, y);
