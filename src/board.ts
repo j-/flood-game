@@ -1,10 +1,21 @@
 import { Board, Color } from './types';
 import { getRandomColor } from './color';
 
-export const getBoardWidth = (board: Board): number => board[0] ? board[0].length : 0;
-export const getBoardHeight = (board: Board): number => board.length;
-export const getBoardColor = (board: Board, x: number, y: number): Color | null => board[y]?.[x] ?? null;
-export const setBoardColor = (board: Board, x: number, y: number, color: Color): void => { board[y][x] = color; };
+export function getBoardWidth(board: Board): number {
+  return board[0] ? board[0].length : 0;
+}
+
+export function getBoardHeight(board: Board): number {
+  return board.length;
+}
+
+export function getBoardColor(board: Board, x: number, y: number): Color | null {
+  return board[y]?.[x] ?? null;
+}
+
+export function setBoardColor(board: Board, x: number, y: number, color: Color): void {
+  board[y][x] = color;
+}
 
 export function* iterateCoord(length: number) {
   for (let i = 0; i < length; i++) {
@@ -20,31 +31,31 @@ export function* iterateCoords(width: number, height: number) {
   }
 }
 
-export const buildBoard = (width: number, height: number): Board => {
+export function buildBoard(width: number, height: number): Board {
   return Array.from(iterateCoord(height), () => {
     return Array.from(iterateCoord(width), () => 0);
   });
-};
+}
 
-export const copyBoard = (board: Board): Board => {
+export function copyBoard(board: Board): Board {
   const copy: Board = [];
   const height = getBoardHeight(board);
   for (const y of iterateCoord(height)) {
     copy.push([...board[y]]);
   }
   return copy;
-};
+}
 
-export const randomiseBoard = (board: Board, rng = Math.random): void => {
+export function randomiseBoard(board: Board, rng = Math.random): void {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
   for (const [x, y] of iterateCoords(width, height)) {
     const color = getRandomColor(rng);
     setBoardColor(board, x, y, color);
   }
-};
+}
 
-export const boardHasColor = (board: Board, target: Color): boolean => {
+export function boardHasColor(board: Board, target: Color): boolean {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
   for (const [x, y] of iterateCoords(width, height)) {
@@ -52,9 +63,9 @@ export const boardHasColor = (board: Board, target: Color): boolean => {
     if (color === target) return true;
   }
   return false;
-};
+}
 
-export const isAllOneColor = (board: Board): boolean => {
+export function isAllOneColor(board: Board): boolean {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
   const target = getBoardColor(board, 0, 0);
@@ -63,7 +74,7 @@ export const isAllOneColor = (board: Board): boolean => {
     if (color !== target) return false;
   }
   return true;
-};
+}
 
 /**
 @see https://en.wikipedia.org/wiki/Flood_fill#Alternative_implementations
@@ -88,7 +99,7 @@ Flood-fill (node, target-color, replacement-color):
  13. Continue looping until Q is exhausted.
  14. Return.
 */
-export const flood = (board: Board, replacement: Color): Board => {
+export function flood(board: Board, replacement: Color): Board {
   const copy = copyBoard(board);
   const target = getBoardColor(board, 0, 0);
   if (target === replacement) return copy;
@@ -132,7 +143,7 @@ export const flood = (board: Board, replacement: Color): Board => {
     }
   }
   return copy;
-};
+}
 
 export function* getMoves() {
   yield Color.RED;
