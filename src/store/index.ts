@@ -106,6 +106,7 @@ export const isGameOver = (state: RootReducerState): boolean => state.isGameOver
 export const isGameWon = (state: RootReducerState): boolean => state.isGameWon;
 export const getCurrentColor = (state: RootReducerState): Color | null => state.currentColor;
 export const canUndoLastMove = (state: RootReducerState): boolean => state.lastBoard !== null;
+export const canRestart = (state: RootReducerState): boolean => state.moves.length > 0;
 export const getWidth = (state: RootReducerState): number | null => state.board ? getBoardWidth(state.board) : null;
 export const getHeight = (state: RootReducerState): number | null => state.board ? getBoardHeight(state.board) : null;
 export const isAnyColor = (color: Color) => (state: RootReducerState): boolean | null => state.board ? boardHasColor(state.board, color) : null;

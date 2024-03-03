@@ -1,16 +1,19 @@
-import React from 'react';
-import Game from './Game';
+import Box from '@mui/material/Box';
+import { FC } from 'react';
+import { useHelpDialog } from '../use-help-dialog';
 import './App.css';
+import Game from './Game';
+import HelpDialog from './HelpDialog';
 
-const App: React.FC = () => (
-  <div className="App container pt-5 pb-5 mb-5">
-    <Game />
+const App: FC = () => {
+  const { isDialogShown, hideDialog } = useHelpDialog();
 
-    <div className="mt-5 mb-5 text-center">
-      <h2>How to play</h2>
-      <p>Tap colors to flood-fill the board from the top left corner. The goal is to make the whole board a single color within 25 moves.</p>
-    </div>
-  </div>
-);
+  return (
+    <Box pt={10}>
+      <Game />
+      <HelpDialog open={isDialogShown} onClose={hideDialog} />
+    </Box>
+  );
+};
 
 export default App;

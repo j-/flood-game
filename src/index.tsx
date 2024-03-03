@@ -1,14 +1,21 @@
-import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './store';
+import { ThemeProvider, createTheme } from '@mui/material';
+import 'bootstrap/dist/css/bootstrap.css';
+import { createRoot } from 'react-dom/client';
+import { Provider as StoreProvider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { Provider as StoreProvider } from 'react-redux';
 import App from './components/App';
-import 'bootstrap/dist/css/bootstrap.css';
-import './styles.css';
+import rootReducer from './store';
 import { startGame } from './store/actions';
 import { trackHighScores } from './track-high-scores';
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import './styles.css';
 
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk, trackHighScores),
@@ -16,9 +23,30 @@ const store = createStore(rootReducer, composeWithDevTools(
 
 store.dispatch(startGame());
 
-render(
+const root = createRoot(document.getElementById('root')!);
+
+const theme = createTheme({
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          color: '#333',
+          backgroundColor: '#ddd',
+        },
+      },
+    },
+  },
+  typography: {
+    button: {
+      textTransform: 'none',
+    },
+  },
+});
+
+root.render(
   <StoreProvider store={store}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </StoreProvider>,
-  document.getElementById('root'),
 );
