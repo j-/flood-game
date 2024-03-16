@@ -100,6 +100,7 @@ export default reducer;
 
 export const getSeed = (state: RootReducerState): string => state.seed;
 export const getMoveCount = (state: RootReducerState): number => state.moves.length;
+export const getMoveLimit = (_state: RootReducerState): number => DEFAULT_MOVE_LIMIT;
 export const getMoveState = (state: RootReducerState): string => serialize(state.moves);
 export const getBoard = (state: RootReducerState): Board | null => state.board;
 export const isGameOver = (state: RootReducerState): boolean => state.isGameOver;

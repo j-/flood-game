@@ -5,6 +5,7 @@ import {
   canUndoLastMove,
   getBoard,
   getMoveCount,
+  getMoveLimit,
   getSeed,
   isGameOver,
   isGameWon,
@@ -19,6 +20,7 @@ export const useGameState = () => {
   const seed = useSelector(getSeed);
   const board = useSelector(getBoard);
   const moves = useSelector(getMoveCount);
+  const moveLimit = useSelector(getMoveLimit);
   const gameOver = useSelector(isGameOver);
   const gameWon = useSelector(isGameWon);
   const canUndo = useSelector(canUndoLastMove);
@@ -55,6 +57,7 @@ export const useGameState = () => {
     seed,
     board,
     moves,
+    moveLimit,
     gameOver,
     gameWon,
     canUndo,

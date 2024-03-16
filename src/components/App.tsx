@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import { FC } from 'react';
 import { useHelpDialog } from '../use-help-dialog';
-import './App.css';
 import Game from './Game';
 import HelpDialog from './HelpDialog';
 

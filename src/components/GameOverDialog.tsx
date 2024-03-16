@@ -15,7 +15,7 @@ const GameOverDialog: FC<DialogProps> = (props) => {
   const labelId = `HelpDialog-${id}`;
   const descriptionId = `HelpDialog-${id}`;
 
-  const { gameWon, moves, newGame, restart } = useGameState();
+  const { gameWon, moves, moveLimit, newGame, restart } = useGameState();
 
   return (
     <Dialog
@@ -44,7 +44,7 @@ const GameOverDialog: FC<DialogProps> = (props) => {
         {gameWon ? (
           <>You beat the game in {moves} moves.</>
         ) : (
-          <>You failed to beat the game in {moves} moves.</>
+          <>You failed to beat the game in {moveLimit} moves.</>
         )}
       </DialogContent>
 

@@ -7,7 +7,6 @@ import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
-import { DEFAULT_MOVE_LIMIT } from '../constants';
 import { useGameState } from '../use-game-state';
 import { useHelpDialog } from '../use-help-dialog';
 
@@ -16,6 +15,7 @@ export const Navbar: FC<AppBarProps> = (props) => {
 
   const {
     moves,
+    moveLimit,
     canUndo,
     canRestart,
     newGame,
@@ -63,7 +63,7 @@ export const Navbar: FC<AppBarProps> = (props) => {
               alignItems={{ xs: 'flex-end', sm: 'center' }}
             >
               <Typography variant='h5' component="span" p={1}>
-                {moves} / {DEFAULT_MOVE_LIMIT}
+                {moves} / {moveLimit}
               </Typography>
 
               <IconButton color="inherit" onClick={handleClickHelp}>

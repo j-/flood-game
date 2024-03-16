@@ -4,12 +4,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import { FC, useId } from 'react';
-import './App.css';
+import { useGameState } from '../use-game-state';
 
 const HelpDialog: FC<DialogProps> = (props) => {
   const id = useId();
   const labelId = `HelpDialog-${id}`;
   const descriptionId = `HelpDialog-${id}`;
+  const { moveLimit } = useGameState();
 
   return (
     <Dialog
@@ -35,7 +36,10 @@ const HelpDialog: FC<DialogProps> = (props) => {
       </IconButton>
 
       <DialogContent id={descriptionId}>
-        <p>Tap colors to flood-fill the board from the top left corner. The goal is to make the whole board a single color within 25 moves.</p>
+        <p>
+          Tap colors to flood-fill the board from the top left corner. The goal
+          is to make the whole board a single color within {moveLimit} moves.
+        </p>
       </DialogContent>
     </Dialog>
   );
