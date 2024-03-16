@@ -16,6 +16,7 @@ const HelpDialog: FC<DialogProps> = (props) => {
     <Dialog
       aria-labelledby={labelId}
       aria-describedby={descriptionId}
+      scroll="body"
       {...props}
     >
       <DialogTitle sx={{ m: 0, p: 2 }} id={labelId}>

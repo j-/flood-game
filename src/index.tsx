@@ -1,9 +1,12 @@
 import { ThemeProvider, createTheme } from '@mui/material';
-import 'bootstrap/dist/css/bootstrap.css';
 import { createRoot } from 'react-dom/client';
 import { Provider as StoreProvider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import persistStore from 'redux-persist/lib/persistStore';
+import storageSession from 'redux-persist/lib/storage/session';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import rootReducer from './store';
@@ -14,12 +17,19 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css';
 
-const store = createStore(rootReducer, composeWithDevTools(
+const persistedReducer = persistReducer({
+  key: 'store',
+  storage: storageSession,
+}, rootReducer);
+
+const store = createStore(persistedReducer, composeWithDevTools(
   applyMiddleware(thunk, trackHighScores),
 ));
+
+const persistor = persistStore(store)
 
 store.dispatch(startGame());
 
@@ -45,8 +55,10 @@ const theme = createTheme({
 
 root.render(
   <StoreProvider store={store}>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <PersistGate persistor={persistor}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </PersistGate>
   </StoreProvider>,
 );
