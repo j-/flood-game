@@ -1,14 +1,13 @@
-import CloseIcon from '@mui/icons-material/Close';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { FC, useId } from 'react';
 import { useGameState } from '../use-game-state';
+import CloseButton from './CloseButton';
 
 const GameOverDialog: FC<DialogProps> = (props) => {
   const id = useId();
@@ -27,18 +26,7 @@ const GameOverDialog: FC<DialogProps> = (props) => {
         {gameWon ? <>You win</> : <>You lose</>}
       </DialogTitle>
 
-      <IconButton
-        aria-label="close"
-        onClick={(e) => props.onClose?.(e, 'backdropClick')}
-        sx={{
-          position: 'absolute',
-          right: 8,
-          top: 8,
-          color: (theme) => theme.palette.grey[500],
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
+      <CloseButton onClick={(e) => props.onClose?.(e, 'backdropClick')} />
 
       <DialogContent sx={{ p: 2 }}>
         {gameWon ? (

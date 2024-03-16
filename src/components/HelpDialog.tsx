@@ -1,10 +1,9 @@
-import CloseIcon from '@mui/icons-material/Close';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
 import { FC, useId } from 'react';
 import { useGameState } from '../use-game-state';
+import CloseButton from './CloseButton';
 
 const HelpDialog: FC<DialogProps> = (props) => {
   const id = useId();
@@ -22,18 +21,7 @@ const HelpDialog: FC<DialogProps> = (props) => {
         How to play
       </DialogTitle>
 
-      <IconButton
-        aria-label="close"
-        onClick={(e) => props.onClose?.(e, 'backdropClick')}
-        sx={{
-          position: 'absolute',
-          right: 8,
-          top: 8,
-          color: (theme) => theme.palette.grey[500],
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
+      <CloseButton onClick={(e) => props.onClose?.(e, 'backdropClick')} />
 
       <DialogContent id={descriptionId}>
         <p>
