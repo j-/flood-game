@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useGameState } from '../use-game-state';
+import { useOnGameOver } from '../use-on-game-over';
 import ColorButtons from './ColorButtons';
 import GameOverDialog from './GameOverDialog';
 import Grid from './Grid';
@@ -8,13 +9,9 @@ import Navbar from './Navbar';
 
 const Game: FC = () => {
   const [showGameOver, setShowGameOver] = useState(false);
-  const { board, gameOver, highScore, flood } = useGameState();
+  const { board, highScore, flood } = useGameState();
 
-  useEffect(() => {
-    if (gameOver) {
-      setShowGameOver(true);
-    }
-  }, [gameOver]);
+  useOnGameOver(() => setShowGameOver(true));
 
   if (!board) return null;
 
