@@ -11,8 +11,8 @@ import CloseButton from './CloseButton';
 
 const GameOverDialog: FC<DialogProps> = (props) => {
   const id = useId();
-  const labelId = `HelpDialog-${id}`;
-  const descriptionId = `HelpDialog-${id}`;
+  const labelId = `GameOverDialog-${id}`;
+  const descriptionId = `GameOverDialog-${id}`;
 
   const { gameWon, moves, moveLimit, newGame, restart } = useGameState();
 
@@ -28,7 +28,7 @@ const GameOverDialog: FC<DialogProps> = (props) => {
 
       <CloseButton onClick={(e) => props.onClose?.(e, 'backdropClick')} />
 
-      <DialogContent sx={{ p: 2 }}>
+      <DialogContent id={descriptionId} sx={{ p: 2 }}>
         {gameWon ? (
           <>You beat the game in {moves} moves.</>
         ) : (

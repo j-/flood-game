@@ -23,11 +23,9 @@ const HelpDialog: FC<DialogProps> = (props) => {
 
       <CloseButton onClick={(e) => props.onClose?.(e, 'backdropClick')} />
 
-      <DialogContent id={descriptionId}>
-        <p>
-          Tap colors to flood-fill the board from the top left corner. The goal
-          is to make the whole board a single color within {moveLimit} moves.
-        </p>
+      <DialogContent id={descriptionId} sx={{ p: 2 }}>
+        Tap colors to flood-fill the board from the top left corner. The goal is
+        to make the whole board a single color within {moveLimit} moves.
       </DialogContent>
     </Dialog>
   );
