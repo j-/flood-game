@@ -19,7 +19,7 @@ const Game: FC = () => {
     <Box p={1}>
       <Navbar />
 
-      <div className="mt-4 mb-4">
+      <div className="mt-4 mb-4 d-flex justify-content-center">
         <Grid board={board} onClick={flood} />
       </div>
 
