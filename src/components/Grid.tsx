@@ -37,8 +37,7 @@ const Grid: React.FC<Props> = ({ board, onClick }) => {
           y={y * size - 0.5}
           width={size + 1}
           height={size + 1}
-          onClick={handleClick}
-          onTouchStart={handleClick}
+          onPointerDown={handleClick}
           data-x={x}
           data-y={y}
 
