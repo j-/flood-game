@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { isAnyColor } from '../store';
-import { Color, colorNames } from '../types';
+import { type Color, colorNames } from '../color';
 import { CirclePath } from './CirclePath';
 import './ColorButton.css';
 

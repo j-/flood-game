@@ -1,5 +1,5 @@
 import { serialize, deserialize } from './serialize';
-import { Color } from './types';
+import { type Color } from './color';
 
 type Case = [moves: Color[], state: string];
 

@@ -1,4 +1,4 @@
-import { Color } from './types';
+import { type Color } from './color';
 
 const serializePair = (m0: Color, m1: Color | null): string => {
   if (m1 == null) m1 = m0;

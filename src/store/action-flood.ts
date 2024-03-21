@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { Color } from '../types';
+import { Color } from '../color';
 
 export const ACTION_FLOOD = 'FLOOD';
 

@@ -1,9 +1,19 @@
 import { Reducer } from 'redux';
 import seedrandom from 'seedrandom';
-import { boardHasColor, buildBoard, flood, getBoardColor, getBoardHeight, getBoardWidth, isAllOneColor, randomiseBoard } from '../board';
+import {
+  boardHasColor,
+  buildBoard,
+  flood,
+  getBoardColor,
+  getBoardHeight,
+  getBoardWidth,
+  isAllOneColor,
+  randomiseBoard,
+  type Board,
+} from '../board';
+import { type Color } from '../color';
 import { DEFAULT_BOARD_SIZE, DEFAULT_MOVE_LIMIT } from '../constants';
 import { serialize } from '../serialize';
-import { Board, Color } from '../types';
 import { isActionFlood, isActionReset, isActionStartGame, isActionUndoMove } from './actions';
 
 export interface RootReducerState {

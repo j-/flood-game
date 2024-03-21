@@ -1,5 +1,6 @@
-import { type Board, Color } from './types';
-import { getRandomColor } from './color';
+import { Color, getRandomColor } from './color';
+
+export type Board = Color[][]
 
 export type Coords = [x: number, y: number];
 

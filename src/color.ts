@@ -1,4 +1,11 @@
-import { Color } from './types';
+export enum Color {
+  RED,
+  ORANGE,
+  YELLOW,
+  GREEN,
+  BLUE,
+  PURPLE,
+}
 
 export const COLOR_COUNT = 6;
 
@@ -24,4 +31,13 @@ export const colorVarMap = new Map<Color, string>([
   [Color.GREEN, 'var(--color-green)'],
   [Color.BLUE, 'var(--color-blue)'],
   [Color.PURPLE, 'var(--color-purple)'],
+]);
+
+export const colorNames = new Map<Color, string>([
+  [Color.RED, 'Red'],
+  [Color.ORANGE, 'Orange'],
+  [Color.YELLOW, 'Yellow'],
+  [Color.GREEN, 'Green'],
+  [Color.BLUE, 'Blue'],
+  [Color.PURPLE, 'Purple'],
 ]);

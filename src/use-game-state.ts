@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { type Color } from './color';
 import { getTodaysSeed } from './seed';
 import {
   canUndoLastMove,
@@ -12,7 +13,6 @@ import {
   canRestart as selectCanRestart,
 } from './store';
 import { flood as floodAction, startGame, undoMove } from './store/actions';
-import { Color } from './types';
 import { useHighScoreConnected } from './use-high-score';
 
 export const useGameState = () => {

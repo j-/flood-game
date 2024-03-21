@@ -1,10 +1,10 @@
 import React, { MouseEventHandler, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Color } from '../color';
+import { getCurrentColor } from '../store';
 import { flood } from '../store/actions';
-import { Color } from '../types';
 import { ColorButton } from './ColorButton';
 import './ColorButtons.css';
-import { getCurrentColor } from '../store';
 
 const ColorButtons: React.FC = () => {
   const dispatch = useDispatch();
