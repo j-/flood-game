@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'bun:test';
 import { serialize, deserialize } from './serialize';
 import { type Color } from './color';
 
