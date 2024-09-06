@@ -4,6 +4,7 @@ import { isAnyColor } from '../store';
 import { type Color, colorNames } from '../color';
 import { CirclePath } from './CirclePath';
 import './ColorButton.css';
+import Button from '@mui/material/Button';
 
 export type ColorButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'> & {
   color: Color;
@@ -20,19 +21,19 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
   const hasColor = useSelector(isAnyColor(color));
 
   return (
-    <button
-      className="ColorButton btn"
+    <Button
+      className="ColorButton"
       type="button"
       value={color}
       title={title}
       disabled={!hasColor}
+      aria-label={name}
       {...props}
     >
-      <span className="sr-only">name</span>
       {isCurrentColor ? (
         <svg
-          width={100}
-          height={100}
+          width="100%"
+          height="100%"
           viewBox='0 0 100 100'
         >
           <CirclePath
@@ -44,6 +45,6 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
           />
         </svg>
       ) : null}
-    </button>
+    </Button>
   );
 };

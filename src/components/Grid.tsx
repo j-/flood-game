@@ -1,8 +1,7 @@
-import { FC, ReactEventHandler, useCallback } from 'react';
-import { getBoardColor, getBoardHeight, getBoardWidth } from '../board';
-import { Board, Color } from '../types';
+import { type FC, type ReactEventHandler, useCallback } from 'react';
+import { type Board, getBoardColor, getBoardHeight, getBoardWidth } from '../board';
+import { type Color } from '../color';
 import { CirclePath } from './CirclePath';
-import './Grid.css';
 import { GridSquare } from './GridSquare';
 
 export interface Props {

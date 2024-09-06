@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { colorVarMap } from '../color';
-import { Color } from '../types';
+import { type Color, colorVarMap } from '../color';
 import './GridSquare.css';
 
 export type GridSquareProps = Omit<React.ComponentProps<typeof motion.rect>, 'color'> & {

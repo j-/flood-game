@@ -4,7 +4,7 @@ import { Color } from '../color';
 import { getCurrentColor } from '../store';
 import { flood } from '../store/actions';
 import { ColorButton } from './ColorButton';
-import './ColorButtons.css';
+import Stack from '@mui/material/Stack';
 
 const ColorButtons: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,14 +16,14 @@ const ColorButtons: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="ColorButtons d-flex justify-content-between">
+    <Stack direction="row" gap={1} justifyContent="space-between">
       <ColorButton onClick={handleClickColor} color={Color.RED} isCurrentColor={currentColor === Color.RED} />
       <ColorButton onClick={handleClickColor} color={Color.ORANGE} isCurrentColor={currentColor === Color.ORANGE} />
       <ColorButton onClick={handleClickColor} color={Color.YELLOW} isCurrentColor={currentColor === Color.YELLOW} />
       <ColorButton onClick={handleClickColor} color={Color.GREEN} isCurrentColor={currentColor === Color.GREEN} />
       <ColorButton onClick={handleClickColor} color={Color.BLUE} isCurrentColor={currentColor === Color.BLUE} />
       <ColorButton onClick={handleClickColor} color={Color.PURPLE} isCurrentColor={currentColor === Color.PURPLE} />
-    </div>
+    </Stack>
   );
 };
 

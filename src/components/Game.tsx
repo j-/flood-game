@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
-import { FC, useState } from 'react';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { type FC, useState } from 'react';
 import { useGameState } from '../use-game-state';
 import { useOnGameOver } from '../use-on-game-over';
 import ColorButtons from './ColorButtons';
@@ -16,25 +18,29 @@ const Game: FC = () => {
   if (!board) return null;
 
   return (
-    <Box p={1}>
+    <Box py={2} px={1}>
       <Navbar />
 
-      <div className="mt-4 mb-4 d-flex justify-content-center">
+      <Stack gap={4} mx="auto" width="min(100%, 40em)">
         <Grid board={board} onClick={flood} />
-      </div>
 
-      <div className="mt-4 mb-4">
         <ColorButtons />
-      </div>
+
+        {highScore ? (
+          <Typography
+            fontWeight="bold"
+            align="center"
+          >
+            Your high score: {String(highScore)}
+          </Typography>
+        ) : null}
+      </Stack>
 
       <GameOverDialog
         open={showGameOver}
         onClose={() => setShowGameOver(false)}
       />
 
-      <div className="mt-4 mb-4 d-flex flex-column align-items-center">
-        {highScore ? <strong>Your high score: {String(highScore)}</strong> : null}
-      </div>
     </Box>
   );
 };
