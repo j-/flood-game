@@ -41,7 +41,7 @@
     "build": "bunx --bun vite build",
     "preview": "bunx vite preview",
     "predeploy": "bun run build",
-    "deploy": "gh-pages"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
