@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["bun-types"]
+    "types": ["bun-types", "@types/umami"]
   },
   "include": ["src"],
   "references": [

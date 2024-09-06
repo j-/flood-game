@@ -1,11 +1,11 @@
-import Dialog, { DialogProps } from '@mui/material/Dialog';
+import Dialog, { type DialogProps } from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { FC, useId } from 'react';
+import { type FC, useId } from 'react';
 import { useGameState } from '../use-game-state';
 import CloseButton from './CloseButton';
 
