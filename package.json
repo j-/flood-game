@@ -11,7 +11,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
-    "bootstrap": "4.4.1",
+    "bootstrap": "^4.6.2",
     "bun-types": "^1.1.4",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.16",
