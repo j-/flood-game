@@ -26,6 +26,7 @@
     "use-local-storage-state": "^19.1.0"
   },
   "devDependencies": {
+    "@ladle/react": "^4.1.2",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "@types/react-redux": "^7.1.16",
@@ -41,7 +42,8 @@
     "build": "bunx --bun vite build",
     "preview": "bunx vite preview",
     "predeploy": "bun run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "ladle": "ladle serve"
   },
   "browserslist": [
     ">0.2%",
