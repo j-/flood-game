@@ -16,7 +16,7 @@ export const COLOR_ARRAY = [
   Color.GREEN,
   Color.BLUE,
   Color.PURPLE,
-];
+] as const;
 
 export const getRandomColor = (rng = Math.random): Color => {
   const i = Math.floor(rng() * COLOR_COUNT);

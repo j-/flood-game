@@ -77,6 +77,14 @@ export function randomiseBoard(board: Board, rng = Math.random): void {
   }
 }
 
+export function fillBoard(board: Board, color: Color): void {
+  const width = getBoardWidth(board);
+  const height = getBoardHeight(board);
+  for (const [x, y] of iterateCoords(width, height)) {
+    setBoardColor(board, x, y, color);
+  }
+}
+
 export function boardHasColor(board: Board, target: Color): boolean {
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
