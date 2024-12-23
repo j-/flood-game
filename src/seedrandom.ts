@@ -1,3 +1,1 @@
-import { type PRNG } from 'seedrandom';
-
-export const seedrandom: (seed?: string) => PRNG = require('seedrandom');
+export { default as seedrandom } from 'seedrandom';
