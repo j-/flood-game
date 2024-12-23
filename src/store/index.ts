@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import seedrandom from 'seedrandom';
+import { seedrandom } from '../seedrandom';
 import {
   boardHasColor,
   buildBoard,
