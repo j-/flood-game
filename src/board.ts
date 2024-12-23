@@ -53,9 +53,9 @@ export function* iterateValidNeighboringCoords(w: number, h: number, x: number, 
   }
 }
 
-export function buildBoard(width: number, height: number): Board {
+export function buildBoard(width: number, height: number, initial = -1): Board {
   return Array.from(iterateCoord(height), () => {
-    return Array.from(iterateCoord(width), () => 0);
+    return Array.from(iterateCoord(width), () => initial);
   });
 }
 
