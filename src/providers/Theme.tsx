@@ -1,5 +1,5 @@
-import { ThemeProvider, createTheme } from '@mui/material';
-import { FC, PropsWithChildren } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import type { FC, PropsWithChildren } from 'react';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -8,6 +8,14 @@ import '@fontsource/roboto/700.css';
 import '../styles.css';
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#333333',
+    },
+    secondary: {
+      main: '#ff4081'
+    },
+  },
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -21,6 +29,7 @@ const theme = createTheme({
   typography: {
     button: {
       textTransform: 'none',
+      boxShadow: 'none',
     },
   },
 });

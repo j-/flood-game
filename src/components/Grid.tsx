@@ -1,17 +1,17 @@
 import { type FC, type ReactEventHandler, useCallback } from 'react';
 import { type Board, getBoardColor, getBoardHeight, getBoardWidth } from '../board';
-import { type Color } from '../color';
+import type { Color } from '../color';
 import { CirclePath } from './CirclePath';
 import { GridSquare } from './GridSquare';
 
-export interface Props {
+export interface GridProps {
   board: Board;
   onClick: (color: Color) => void;
 }
 
 const SIZE = 35;
 
-const Grid: FC<Props> = ({ board, onClick }) => {
+export const Grid: FC<GridProps> = ({ board, onClick }) => {
   const size = SIZE;
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
@@ -65,5 +65,3 @@ const Grid: FC<Props> = ({ board, onClick }) => {
     </svg>
   );
 };
-
-export default Grid;

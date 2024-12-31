@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { buildBoard, randomiseBoard } from '../board';
 import '../styles.css';
-import Grid from './Grid';
+import { Grid } from './Grid';
 
 export const Example = () => {
   const size = 8;

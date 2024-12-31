@@ -17,11 +17,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.2.9",
+    "react-router": "^7.1.1",
     "redux": "4.0.5",
     "redux-devtools-extension": "2.13.8",
     "redux-persist": "^6.0.0",
     "redux-thunk": "2.3.0",
-    "seedrandom": "^3.0.5",
     "use-local-storage-state": "^19.1.0"
   },
   "devDependencies": {

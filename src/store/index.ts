@@ -1,5 +1,4 @@
 import { Reducer } from 'redux';
-import { seedrandom } from '../seedrandom';
 import {
   boardHasColor,
   buildBoard,
@@ -13,11 +12,13 @@ import {
 } from '../board';
 import { type Color } from '../color';
 import { DEFAULT_BOARD_SIZE, DEFAULT_MOVE_LIMIT } from '../constants';
+import { denormalizeSeed } from '../seed';
+import { seedrandom } from '../seedrandom';
 import { serialize } from '../serialize';
 import { isActionFlood, isActionReset, isActionStartGame, isActionUndoMove } from './actions';
 
 export interface RootReducerState {
-  seed: string;
+  normalizedSeed: number;
   board: Board | null;
   lastBoard: Board | null;
   moves: Color[];
@@ -27,7 +28,7 @@ export interface RootReducerState {
 }
 
 export const DEFAULT_STATE: RootReducerState = {
-  seed: '',
+  normalizedSeed: 2_0000_00_00,
   lastBoard: null,
   board: null,
   moves: [],
@@ -44,10 +45,10 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
   if (isActionStartGame(action)) {
     const { seed } = action.data;
     const board = buildBoard(DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE);
-    randomiseBoard(board, seedrandom(seed));
+    randomiseBoard(board, seedrandom(seed.toString()));
     const currentColor = getBoardColor(board, 0, 0);
     return {
-      seed,
+      normalizedSeed: seed,
       board,
       currentColor,
       lastBoard: null,
@@ -108,7 +109,8 @@ export const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action
 
 export default reducer;
 
-export const getSeed = (state: RootReducerState): string => state.seed;
+export const getSeedType = (state: RootReducerState): number => denormalizeSeed(state.normalizedSeed)[0];
+export const getSeed = (state: RootReducerState): number => denormalizeSeed(state.normalizedSeed)[1];
 export const getMoveCount = (state: RootReducerState): number => state.moves.length;
 export const getMoveLimit = (_state: RootReducerState): number => DEFAULT_MOVE_LIMIT;
 export const getMoveState = (state: RootReducerState): string => serialize(state.moves);

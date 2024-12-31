@@ -1,12 +1,35 @@
-/**
- * Returns a formatted date string representing today's date.
- * @param now Optional date object, defaults to the current date and time.
- * @returns Formatted date string.
- */
-export const getTodaysSeed = (now: Date = new Date()): string => {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
+export enum SeedType {
+  DATE = 1,
+  CUST = 2,
+}
 
-  return `${year}-${month}-${day}`;
+export const getTodaysSeed = (now: Date = new Date()): number => {
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+
+  return (
+    year * 1_0000 +
+    month * 1_00 +
+    day
+  );
+};
+
+export const getRandomSeed = (): number => (
+  Math.floor(Math.random() * 1_0000_00_00)
+);
+
+export const clamp = (seed: number): number => (
+  Math.max(0, Math.min(seed, 9999_99_99))
+);
+
+export const normalizeSeed = (seed: number, type: SeedType): number => (
+  type * 1_0000_00_00 + clamp(seed)
+);
+
+export const denormalizeSeed = (seed: number): [SeedType, number] => {
+  const type = Math.floor(seed / 1_0000_00_00);
+  const value = seed % 1_0000_00_00;
+
+  return [type, value];
 };

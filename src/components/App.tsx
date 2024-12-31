@@ -1,20 +1,14 @@
-import Box from '@mui/material/Box';
 import type { FC } from 'react';
-import { useHelpDialog } from '../use-help-dialog';
-import { CurrentColorConnected } from './CurrentColorConnected';
-import Game from './Game';
-import HelpDialog from './HelpDialog';
+import { Route, Routes } from 'react-router';
+import { Route as RouteEnum } from '../route';
+import { RouteMain } from './RouteMain';
+import { RouteSeeded } from './RouteSeeded';
+import { RouteTutorial } from './RouteTutorial';
 
-const App: FC = () => {
-  const { isDialogShown, hideDialog } = useHelpDialog();
-
-  return (
-    <Box pt={10}>
-      <Game />
-      <HelpDialog open={isDialogShown} onClose={hideDialog} />
-      <CurrentColorConnected />
-    </Box>
-  );
-};
-
-export default App;
+export const App: FC = () => (
+  <Routes>
+    <Route path={RouteEnum.HOW_TO_PLAY} Component={RouteTutorial} />
+    <Route path={RouteEnum.CUSTOM_SEED} Component={RouteSeeded} />
+    <Route path={RouteEnum.MAIN} Component={RouteMain} />
+  </Routes>
+);

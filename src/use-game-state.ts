@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { colorNames, type Color } from './color';
-import { getTodaysSeed } from './seed';
+import { getTodaysSeed, SeedType } from './seed';
 import {
   canUndoLastMove,
   getBoard,
@@ -9,6 +9,7 @@ import {
   getMoveCount,
   getMoveLimit,
   getSeed,
+  getSeedType,
   isGameOver,
   isGameWon,
   canRestart as selectCanRestart,
@@ -19,6 +20,7 @@ import { useHighScoreConnected } from './use-high-score';
 export const useGameState = () => {
   const dispatch = useDispatch();
   const seed = useSelector(getSeed);
+  const seedType = useSelector(getSeedType);
   const board = useSelector(getBoard);
   const moves = useSelector(getMoveCount);
   const moveLimit = useSelector(getMoveLimit);
@@ -36,20 +38,23 @@ export const useGameState = () => {
   }, [dispatch]);
 
   const restart = useCallback(() => {
-    dispatch(startGame(seed));
+    dispatch(startGame(seed, seedType));
     window.dataLayer?.push({ event: 'restart_game' });
     window.umami?.track('Restart game');
-  }, [dispatch, seed]);
+  }, [dispatch, seed, seedType]);
 
-  const newGame = useCallback(() => {
-    dispatch(startGame());
-    window.dataLayer?.push({ event: 'new_game' });
+  const newGame = useCallback((seed?: number) => {
+    dispatch(startGame(seed));
+    window.dataLayer?.push({
+      event: 'new_game',
+      seed: String(seed),
+    });
     window.umami?.track('New game');
   }, [dispatch]);
 
   const todaysGame = useCallback(() => {
     const seed = getTodaysSeed();
-    dispatch(startGame(seed));
+    dispatch(startGame(seed, SeedType.DATE));
     window.dataLayer?.push({ event: 'todays_game' });
     window.umami?.track('Today\'s game', { seed });
   }, [dispatch]);
@@ -65,6 +70,7 @@ export const useGameState = () => {
 
   return {
     seed,
+    seedType,
     board,
     moves,
     moveLimit,
@@ -81,3 +87,5 @@ export const useGameState = () => {
     flood,
   };
 };
+
+export type GameState = ReturnType<typeof useGameState>;

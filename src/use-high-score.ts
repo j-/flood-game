@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getHeight, getSeed, getWidth, isGameOver } from './store';
+import { getHeight, getSeed, getSeedType, getWidth, isGameOver } from './store';
 import { get } from './track-high-scores';
 import { deserialize } from './serialize';
+import { normalizeSeed } from './seed';
 
-export const useHighScore = (width: number, height: number, seed: string, gameOver?: boolean) => {
+export const useHighScore = (
+  width: number,
+  height: number,
+  seed: number,
+  gameOver?: boolean,
+) => {
   const [score, setScore] = useState<number | null>(null);
 
   useEffect(() => {
@@ -14,7 +20,7 @@ export const useHighScore = (width: number, height: number, seed: string, gameOv
     let mounted = true;
 
     (async () => {
-      const moves = await get(width, height, seed);
+      const moves = await get(width, height, seed.toString());
       if (!moves) return;
       const { length } = deserialize(moves);
       if (!mounted) return;
@@ -32,12 +38,15 @@ export const useHighScore = (width: number, height: number, seed: string, gameOv
 export const useHighScoreConnected = () => {
   const width = useSelector(getWidth);
   const height = useSelector(getHeight);
-  const seed = useSelector(getSeed);
+  const normalizedSeed = normalizeSeed(
+    useSelector(getSeed),
+    useSelector(getSeedType)
+  );
   const gameOver = useSelector(isGameOver);
   return useHighScore(
     width ?? Infinity,
     height ?? Infinity,
-    seed,
+    normalizedSeed,
     gameOver
   );
 };
