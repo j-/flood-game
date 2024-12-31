@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -8,7 +8,7 @@ import persistStore from 'redux-persist/lib/persistStore';
 import storageSession from 'redux-persist/lib/storage/session';
 import thunk from 'redux-thunk';
 import rootReducer from '../store';
-import { startGame } from '../store/actions';
+import { todaysGame } from '../store/actions';
 import { trackHighScores } from '../track-high-scores';
 
 const persistedReducer = persistReducer({
@@ -22,7 +22,7 @@ const store = createStore(persistedReducer, composeWithDevTools(
 
 const persistor = persistStore(store)
 
-store.dispatch(startGame());
+store.dispatch(todaysGame());
 
 export const Store: FC<PropsWithChildren> = ({ children }) => (
   <StoreProvider store={store}>

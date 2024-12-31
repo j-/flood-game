@@ -1,5 +1,5 @@
-import { Action } from 'redux';
-import { getRandomSeed, normalizeSeed, SeedType } from '../seed';
+import type { Action } from 'redux';
+import { getRandomSeed, getTodaysSeed, normalizeSeed, SeedType } from '../seed';
 
 export const ACTION_START_GAME = 'START_GAME';
 
@@ -19,3 +19,7 @@ export const startGame = (seed = getRandomSeed(), type = SeedType.CUST): ActionS
     seed: normalizeSeed(seed, type),
   },
 });
+
+export const todaysGame = (seed = getTodaysSeed()): ActionStartGame => (
+  startGame(seed, SeedType.DATE)
+);

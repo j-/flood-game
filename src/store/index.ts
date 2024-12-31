@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import type { Reducer } from 'redux';
 import {
   boardHasColor,
   buildBoard,
@@ -10,7 +10,7 @@ import {
   randomiseBoard,
   type Board,
 } from '../board';
-import { type Color } from '../color';
+import type { Color } from '../color';
 import { DEFAULT_BOARD_SIZE, DEFAULT_MOVE_LIMIT } from '../constants';
 import { denormalizeSeed } from '../seed';
 import { seedrandom } from '../seedrandom';
