@@ -5,6 +5,7 @@ import { getTodaysSeed } from './seed';
 import {
   canUndoLastMove,
   getBoard,
+  getCurrentColor,
   getMoveCount,
   getMoveLimit,
   getSeed,
@@ -25,6 +26,7 @@ export const useGameState = () => {
   const gameWon = useSelector(isGameWon);
   const canUndo = useSelector(canUndoLastMove);
   const canRestart = useSelector(selectCanRestart);
+  const currentColor = useSelector(getCurrentColor);
   const highScore = useHighScoreConnected();
 
   const undo = useCallback(() => {
@@ -70,6 +72,7 @@ export const useGameState = () => {
     gameWon,
     canUndo,
     canRestart,
+    currentColor,
     highScore,
     undo,
     restart,

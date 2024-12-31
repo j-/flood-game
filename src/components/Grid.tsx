@@ -30,6 +30,10 @@ const Grid: FC<Props> = ({ board, onClick }) => {
       className="Grid"
       viewBox={VIEWBOX}
       preserveAspectRatio="none"
+      style={{
+        borderRadius: '4px',
+        boxShadow: 'var(--box-shadow)',
+      }}
     >
       {Array.from({ length: height }, (_, y) => [
         Array.from({ length: width }, (_, x) => (

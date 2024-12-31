@@ -1,3 +1,8 @@
+html {
+  transition: background-color 500ms;
+  background-color: color-mix(in srgb, var(--color-current) 50%, transparent);
+}
+
 html,
 body,
 #root {
@@ -19,4 +24,7 @@ body {
   --color-green: hsl(180, 100%, 60%);
   --color-blue: hsl(240, 100%, 60%);
   --color-purple: hsl(300, 100%, 60%);
+
+  --color-current: var(--color-red);
+  --box-shadow: 0 0 0 4px #fff;
 }

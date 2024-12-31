@@ -2,6 +2,7 @@
   width: 4rem;
   aspect-ratio: 1/1;
   min-width: auto !important;
+  box-shadow: var(--box-shadow);
 }
 
 .ColorButton[value="0"] { background-color: var(--color-red) !important; }
