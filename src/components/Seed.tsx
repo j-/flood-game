@@ -12,8 +12,8 @@ export type SeedProps = ButtonProps & {
 
 const formatDateSeed = (seed: number) => {
   const year = Math.floor(seed / 1_0000);
-  const month = Math.floor((seed % 1_0000) / 1_00);
-  const date = Math.floor(seed % 1_00);
+  const month = String(Math.floor((seed % 1_0000) / 1_00)).padStart(2, '0');
+  const date = String(Math.floor(seed % 1_00)).padStart(2, '0');
   return `${year}-${month}-${date}`;
 };
 
