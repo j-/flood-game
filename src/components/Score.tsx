@@ -24,6 +24,12 @@ export const Score: FC<ScoreProps> = ({
       component="div"
       variant="h3"
       lineHeight={0.75}
+      sx={{
+        fontSize: {
+          xs: 32,
+          lg: 48,
+        },
+      }}
     >
       {String(moveCount)}
     </Typography>

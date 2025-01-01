@@ -33,6 +33,8 @@ export const ScoreBoard: FC<ScoreBoardProps> = ({
       {highScore == null ? null : (
         <Typography
           sx={{
+            zIndex: -1,
+            mt: -1,
             p: 1,
             borderRadius: 1,
             textAlign: 'center',
