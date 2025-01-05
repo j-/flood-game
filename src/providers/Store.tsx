@@ -8,7 +8,7 @@ import persistStore from 'redux-persist/lib/persistStore';
 import storageSession from 'redux-persist/lib/storage/session';
 import thunk from 'redux-thunk';
 import rootReducer from '../store';
-import { todaysGame } from '../store/actions';
+import { randomGame, todaysGame } from '../store/actions';
 import { trackHighScores } from '../track-high-scores';
 
 const persistedReducer = persistReducer({
@@ -22,7 +22,12 @@ const store = createStore(persistedReducer, composeWithDevTools(
 
 const persistor = persistStore(store)
 
-store.dispatch(todaysGame());
+const params = new URLSearchParams(window.location.search);
+if (params.get('start') === 'random') {
+  store.dispatch(randomGame());
+} else {
+  store.dispatch(todaysGame());
+}
 
 export const Store: FC<PropsWithChildren> = ({ children }) => (
   <StoreProvider store={store}>

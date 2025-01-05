@@ -23,3 +23,7 @@ export const startGame = (seed = getRandomSeed(), type = SeedType.CUST): ActionS
 export const todaysGame = (seed = getTodaysSeed()): ActionStartGame => (
   startGame(seed, SeedType.DATE)
 );
+
+export const randomGame = (seed = getRandomSeed()): ActionStartGame => (
+  startGame(seed, SeedType.CUST)
+);
