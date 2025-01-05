@@ -3,51 +3,51 @@
   "name": "Flood game",
   "icons": [
     {
-      "src": "/logo48.png",
+      "src": "./logo48.png",
       "sizes": "48x48",
       "type": "image/png"
     },
     {
-      "src": "/logo72.png",
+      "src": "./logo72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "/logo96.png",
+      "src": "./logo96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "/logo144.png",
+      "src": "./logo144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/logo192.png",
+      "src": "./logo192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/logo512.png",
+      "src": "./logo512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/monochrome-circle.svg",
+      "src": "./monochrome-circle.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "monochrome"
     },
     {
-      "src": "/favicon.svg",
+      "src": "./favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/favicon.ico",
+      "src": "./favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
     }
@@ -57,13 +57,13 @@
       "name": "Today's game",
       "short_name": "Today's game",
       "description": "Play today's game",
-      "url": "?start=today"
+      "url": "./?start=today"
     },
     {
       "name": "Random game",
       "short_name": "Random game",
       "description": "Play a random game",
-      "url": "?start=random"
+      "url": "./?start=random"
     }
   ],
   "start_url": ".",
