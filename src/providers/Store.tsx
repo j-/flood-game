@@ -7,14 +7,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/lib/persistStore';
 import storageSession from 'redux-persist/lib/storage/session';
 import thunk from 'redux-thunk';
-import { IS_STANDALONE } from '../constants';
 import rootReducer from '../store';
 import { randomGame, todaysGame } from '../store/actions';
 import { trackHighScores } from '../track-high-scores';
 
 const persistedReducer = persistReducer({
   key: 'store',
-  storage: IS_STANDALONE ? localStorage : storageSession,
+  storage: storageSession,
 }, rootReducer);
 
 const store = createStore(persistedReducer, composeWithDevTools(
