@@ -57,13 +57,13 @@
       "name": "Today's game",
       "short_name": "Today's game",
       "description": "Play today's game",
-      "url": "/?start=today"
+      "url": "?start=today"
     },
     {
       "name": "Random game",
       "short_name": "Random game",
       "description": "Play a random game",
-      "url": "/?start=random"
+      "url": "?start=random"
     }
   ],
   "start_url": ".",
