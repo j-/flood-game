@@ -1,6 +1,6 @@
 {
-  "short_name": "Flood game",
-  "name": "Flood game",
+  "short_name": "Flood Game",
+  "name": "Flood Game",
   "icons": [
     {
       "src": "./logo48.png",
@@ -60,8 +60,14 @@
       "url": "./?start=today",
       "icons": [
         {
+          "src": "./logo96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
           "src": "./favicon.svg",
-          "sizes": "any"
+          "sizes": "any",
+          "type": "image/svg+xml"
         }
       ]
     },
@@ -72,8 +78,14 @@
       "url": "./?start=random",
       "icons": [
         {
+          "src": "./logo96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
           "src": "./favicon.svg",
-          "sizes": "any"
+          "sizes": "any",
+          "type": "image/svg+xml"
         }
       ]
     }
