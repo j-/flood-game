@@ -41,16 +41,10 @@
       "purpose": "monochrome"
     },
     {
-      "src": "./maskable.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "maskable"
-    },
-    {
       "src": "./favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "./favicon.ico",
