@@ -48,7 +48,7 @@
     },
     {
       "src": "./favicon.ico",
-      "sizes": "48x48",
+      "sizes": "32x32",
       "type": "image/x-icon"
     }
   ],
@@ -57,13 +57,25 @@
       "name": "Today's game",
       "short_name": "Today's game",
       "description": "Play today's game",
-      "url": "./?start=today"
+      "url": "./?start=today",
+      "icons": [
+        {
+          "src": "./favicon.svg",
+          "sizes": "any"
+        }
+      ]
     },
     {
       "name": "Random game",
       "short_name": "Random game",
       "description": "Play a random game",
-      "url": "./?start=random"
+      "url": "./?start=random",
+      "icons": [
+        {
+          "src": "./favicon.svg",
+          "sizes": "any"
+        }
+      ]
     }
   ],
   "start_url": ".",
