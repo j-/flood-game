@@ -33,6 +33,8 @@ export const Grid: FC<GridProps> = ({ board, onClick }) => {
       style={{
         borderRadius: '4px',
         boxShadow: 'var(--box-shadow)',
+        // TODO: Avoid using calc() here.
+        width: `calc(${width}px * round(100% / ${width}px))`,
       }}
     >
       {Array.from({ length: height }, (_, y) => [
