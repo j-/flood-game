@@ -14,6 +14,8 @@ export const GridSize: FC<GridProps> = (props) => {
     const originalWidth = entries[0].contentRect.width;
     const flooredWidth = Math.floor(originalWidth / width) * width;
 
+    // Use percentage over fixed pixel size to allow further resize observer
+    // callbacks to be triggered. Otherwise the grid will always be one size.
     child.style.width = flooredWidth / originalWidth * 100 + '%';
   }, []);
 
