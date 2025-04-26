@@ -1,4 +1,4 @@
-import { type FC, useEffect, useRef } from 'react';
+import { type FC, useCallback, useEffect, useRef } from 'react';
 import { getBoardWidth } from '../board';
 import { Grid, GridProps } from './Grid';
 
@@ -7,24 +7,27 @@ export const GridSize: FC<GridProps> = (props) => {
   const childRef = useRef<SVGSVGElement>(null);
   const width = getBoardWidth(props.board);
 
+  const observerCallback = useCallback<ResizeObserverCallback>((entries) => {
+    const child = childRef.current;
+    if (!child) return;
+
+    const originalWidth = entries[0].contentRect.width;
+    const flooredWidth = Math.floor(originalWidth / width) * width;
+
+    child.style.width = flooredWidth / originalWidth * 100 + '%';
+  }, []);
+
   useEffect(() => {
     const parent = parentRef.current;
-    const child = childRef.current;
-    if (!parent || !child) return;
+    if (!parent) return;
 
-    const callback = (entries: ResizeObserverEntry[]) => {
-      const originalWidth = entries[0].contentRect.width;
-      const flooredWidth = Math.floor(originalWidth / width) * width;
-      child.style.width = flooredWidth / originalWidth * 100 + '%';
-    };
-
-    const observer = new ResizeObserver(callback);
+    const observer = new ResizeObserver(observerCallback);
     observer.observe(parent);
 
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [observerCallback]);
 
   return (
     <div
@@ -36,10 +39,7 @@ export const GridSize: FC<GridProps> = (props) => {
         placeItems: 'center',
       }}
     >
-      <Grid
-        ref={childRef}
-        {...props}
-      />
+      <Grid ref={childRef} {...props} />
     </div>
   );
 };
