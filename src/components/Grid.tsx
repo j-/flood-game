@@ -1,4 +1,4 @@
-import { type FC, type ReactEventHandler, useCallback } from 'react';
+import { forwardRef, type ReactEventHandler, useCallback } from 'react';
 import { type Board, getBoardColor, getBoardHeight, getBoardWidth } from '../board';
 import type { Color } from '../color';
 import { CirclePath } from './CirclePath';
@@ -10,8 +10,10 @@ export interface GridProps {
 }
 
 const SIZE = 35;
+const OVERLAP = 0;
 
-export const Grid: FC<GridProps> = ({ board, onClick }) => {
+export const Grid = forwardRef<SVGSVGElement, GridProps>((props, ref) => {
+  const { board, onClick } = props;
   const size = SIZE;
   const width = getBoardWidth(board);
   const height = getBoardHeight(board);
@@ -27,6 +29,7 @@ export const Grid: FC<GridProps> = ({ board, onClick }) => {
 
   return (
     <svg
+      ref={ref}
       className="Grid"
       viewBox={VIEWBOX}
       preserveAspectRatio="none"
@@ -39,10 +42,10 @@ export const Grid: FC<GridProps> = ({ board, onClick }) => {
         Array.from({ length: width }, (_, x) => (
           <GridSquare
             key={x + ',' + y}
-            x={x * size - 0.5}
-            y={y * size - 0.5}
-            width={size + 1}
-            height={size + 1}
+            x={x * size - OVERLAP}
+            y={y * size - OVERLAP}
+            width={size + OVERLAP * 2}
+            height={size + OVERLAP * 2}
             onPointerDown={handleClick}
             data-x={x}
             data-y={y}
@@ -64,4 +67,4 @@ export const Grid: FC<GridProps> = ({ board, onClick }) => {
       />
     </svg>
   );
-};
+});
