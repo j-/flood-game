@@ -24,6 +24,14 @@ export const GameActionsConnected: FC = () => {
         variant: highlightRestart ? 'contained' : 'text',
         onClick: restart,
         disabled: !canRestart,
+        sx: highlightRestart ? {
+          animation: 'GameActionsConnected-pulse 1s ease-in-out infinite alternate',
+          '@keyframes GameActionsConnected-pulse': {
+            to: {
+              transform: 'scale(1.1)',
+            },
+          },
+        } : null,
       }}
     />
   );
