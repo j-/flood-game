@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useGameState } from '../use-game-state';
-import { Grid } from './Grid';
+import { GridSize } from './GridSize';
 
 export const GridConnected: FC = () => {
   const { board, flood } = useGameState();
@@ -8,6 +8,6 @@ export const GridConnected: FC = () => {
   if (!board) return null;
 
   return (
-    <Grid board={board} onClick={flood} />
+    <GridSize board={board} onClick={flood} />
   );
 };
