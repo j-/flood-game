@@ -1,16 +1,21 @@
+import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { FormEventHandler, useCallback, useId, useMemo, useState, type FC } from 'react';
 import { useNavigate } from 'react-router';
 import { Route } from '../route';
 import { useGameState } from '../use-game-state';
-import CloseIcon from '@mui/icons-material/Close';
 
 export const RouteSeeded: FC = () => {
   const id = useId();
-  const { newGame, seed: defaultValue } = useGameState();
+  const {
+    newGame,
+    todaysGame,
+    seed: defaultValue,
+  } = useGameState();
   const navigate = useNavigate();
   const seedFieldId = `RouteSeeded-${id}-seed`;
   const [seed, setSeed] = useState(() => defaultValue.toString());
@@ -79,8 +84,39 @@ export const RouteSeeded: FC = () => {
             type="submit"
             disabled={seed === '' || !isNumber}
           >
-            Start game
+            Start custom game
           </Button>
+
+          <Divider>Or</Divider>
+
+          <Stack direction="row" gap={2}>
+            <Button
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                todaysGame();
+                navigate(Route.MAIN);
+              }}
+              sx={{ flex: 1 }}
+            >
+              Today&apos;s game
+            </Button>
+
+            <Button
+              variant="text"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                newGame();
+                navigate(Route.MAIN);
+              }}
+              sx={{ flex: 1 }}
+            >
+              Random game
+            </Button>
+          </Stack>
         </Stack>
       </form>
     </Box>
