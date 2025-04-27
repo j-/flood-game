@@ -35,9 +35,9 @@ export const colorVarMap = new Map<Color, string>([
 
 export const colorNames = new Map<Color, string>([
   [Color.RED, 'Red'],
-  [Color.ORANGE, 'Orange'],
-  [Color.YELLOW, 'Yellow'],
-  [Color.GREEN, 'Green'],
+  [Color.ORANGE, 'Yellow'],
+  [Color.YELLOW, 'Green'],
+  [Color.GREEN, 'Cyan'],
   [Color.BLUE, 'Blue'],
-  [Color.PURPLE, 'Purple'],
+  [Color.PURPLE, 'Magenta'],
 ]);
