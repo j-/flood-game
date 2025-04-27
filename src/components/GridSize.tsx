@@ -17,7 +17,7 @@ export const GridSize: FC<GridProps> = (props) => {
     // Use percentage over fixed pixel size to allow further resize observer
     // callbacks to be triggered. Otherwise the grid will always be one size.
     child.style.width = flooredWidth / originalWidth * 100 + '%';
-  }, []);
+  }, [width]);
 
   useEffect(() => {
     const parent = parentRef.current;

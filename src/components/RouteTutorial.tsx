@@ -45,12 +45,12 @@ export const RouteTutorial: FC = () => {
       <dl>
         <Box component="dt" mb={1}>
           <Typography color="initial" fontWeight={500}>
-            Today's game
+            Today&apos;s game
           </Typography>
         </Box>
         <Box component="dd" mb={4}>
-          Starts the game with today's random pattern for all players so you
-          can compare your score with your friends.
+          Starts the game with today&apos;s random pattern for all players so
+          you can compare your score with your friends.
         </Box>
 
         <Box component="dt" mb={1}>

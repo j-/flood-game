@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 interface DataLayerObject extends Record<string, string> {}
 
 interface DataLayer extends Array<DataLayerObject> {

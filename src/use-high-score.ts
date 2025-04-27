@@ -5,6 +5,8 @@ import { get } from './track-high-scores';
 import { deserialize } from './serialize';
 import { normalizeSeed } from './seed';
 
+const noop = (..._: any[]) => {};
+
 export const useHighScore = (
   width: number,
   height: number,
@@ -16,7 +18,7 @@ export const useHighScore = (
   useEffect(() => {
     setScore(null);
     // Consume var.
-    gameOver = gameOver;
+    noop(gameOver);
     let mounted = true;
 
     (async () => {

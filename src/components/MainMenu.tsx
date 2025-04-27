@@ -22,7 +22,7 @@ export const MainMenu: FC<MainMenuProps> = ({
   <List {...props}>
     <ListItemButton {...buttonPropsTodaysGame}>
       <ListItemText>
-        Today's game
+        Today&apos;s game
       </ListItemText>
     </ListItemButton>
 

@@ -27,7 +27,7 @@ export const RouteSeeded: FC = () => {
     e.preventDefault();
     newGame(asNumber);
     navigate(Route.MAIN);
-  }, [newGame, seed]);
+  }, [asNumber, navigate, newGame]);
 
   return (
     <Box sx={{
